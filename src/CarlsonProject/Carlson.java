@@ -3,26 +3,28 @@ package CarlsonProject;
 public class Carlson extends Person implements Talkable{
 
 	private int WindowMayChoose;
-	private boolean jamWasEaten;
+	private int jamWasEaten; // Счётчик ходов до возможности употребить джем
+    final private int JAMTURN = 6; // Количество ходов, которые должны пройти между проеданием джема
 
 	Carlson(String name){
 		super(name, 60);
 	}
 
-	public void chooseWindow(Window Windows[]) {
+	public void chooseWindow(Window windows[]) { //принимает массив всех окон и выбирает из него одно
+		// Значение выбранного окна присваивается полю в классе Move
 		int currentLen = 0;
-		for (int i = 0; i < Windows.length; i++) {
-			If(Windows[i].isSpeakFlag()) {
+		for (int i = 0; i < windows.length; i++) {
+			if(windows[i].isSpeakFlag()) {
 				WindowMayChoose = i;
 				printStatus();
 
-				If (currenLen == 0) {
+				if (currentLen == 0) {
 					currentLen = Math.abs(i - Move.getCurrWindowID());
 				}
 
-				If (Math.abs(Move.getCurrWindowID() - i) <= currentLen) {
+				if (Math.abs(Move.getCurrWindowID() - i) <= currentLen) {
 					Move.setTargetWindowID(i);
-					currenLen = Math.Abs(i - Move.getCurrWindowID());
+					currentLen = Math.abs(i - Move.getCurrWindowID());
 					printStatus();
 					say("chooseWindow");
 				}
@@ -31,28 +33,35 @@ public class Carlson extends Person implements Talkable{
 	}
 
 	public void say(String what, Baby baby){
-		If (what == "chooseWindow"){
-			System.out.println("Малыш и Карлсон ползут к ", Window[Move.getTargetWindowID].getColor(), "му окну");
-		} Elseif (what == "jam"){
+		if (what == "chooseWindow"){
+			System.out.println("Малыш и Карлсон ползут к ", Window[Move.getTargetWindowID()].getColor(), "му окну");
+		} else if (what == "jam"){
 			System.out.println("Карлсон съел банку варенья");
-			System.out.println("У малыша осталось ", baby);
+			System.out.printf("У малыша осталось %d банок варенья",  baby.getJamCounter());
 
 		}
 	}
 
+	public int getJamWasEaten(){
+	    return this.jamWasEaten;
+    }
+
 	public void eatJam(Baby baby){
-		If (baby.getJamCounter()>)
-		baby.decJam();
-		if Jam
+		if (jamWasEaten == 0) {
+            if (baby.hasJam()) {
+                baby.decJam();
+                this.jamWasEaten = JAMTURN;
+            }
+        }
 	}
 
 	public void printStatus(){
-		System.out.println("Из ",  Windows[WindowMayChoose].getColor(), "го окна доносится крик");
+		System.out.printf("Из #s го окна доносится крик", Move.getWindows()[WindowMayChoose].getColorString());
 	}
 
 	@Override
 	public void rest(){
-		if (this.getEndurance()<=55){ setEndurance(getEndurance()+5); }
+		if (this.getEndurance()<=55){ this.setEndurance(this.getEndurance()+5); }
 		else{ setEndurance(60); }
 	}
 }
