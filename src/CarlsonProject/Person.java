@@ -1,7 +1,9 @@
+package CarlsonProject;
+//abstract class for realise Carlson and Baby
 public abstract class Person{
 
 	private String name;
-	private int endurance;
+	private int endurance; //выносливость
 
 	public void move(){
 	}
@@ -20,7 +22,7 @@ public abstract class Person{
 
 	public abstract void rest(){};
 
-	public Person(String name; int endurance){
+	public Person(String name, int endur){
 		this.name = name;
-		this.endurance = endurance;	
+		this.endurance = endur;
 	}
