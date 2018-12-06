@@ -7,23 +7,29 @@ final public static class Move {
     private static int currWindowID;
     private static int targetWindowID;
 
-    public static int getCurrWindowID(){
-        return this.currWinwowID;
-    }
-
-    public static int getTargetWindowID(){
-        return this.targetWindowID;
+    public Move(Window[] windows) {
+        Move.windows = windows;
     }
 
     public static void setCurrWindowID(int ID){
-        this.currWinwowID = ID;
+        Move.currWindowID = ID;
     }
 
     public static void setTargetWindowID(int ID){
-        this.targetWindowID = ID;
+        Move.targetWindowID = ID;
+    }
+
+    public static int getCurrWindowID(){
+        return Move.currWindowID;
+    }
+
+    public static int getTargetWindowID(){
+        return Move.targetWindowID;
     }
 
     public static Window[] getWindows(){
         return windows;
     }
+
+    public void
 }

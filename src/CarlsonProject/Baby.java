@@ -45,4 +45,8 @@ final public class Baby extends Person implements Talkable {
         if (this.getEndurance() <= RESTMIN){ incEndurance(RESTINC, this); }
         else{ this.setEndurance(BABYENDUR); }
     }
+
+    public String toString() {
+        return "Малыш " + this.getName();
+    }
 }

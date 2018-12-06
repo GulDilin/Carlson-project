@@ -2,8 +2,8 @@ package CarlsonProject;
 //abstract class for realise Carlson and Baby
 public abstract class Person implements EnduranceChanger{
 
-	private String name;
-	private int endurance; //выносливость
+    private String name;
+    private int endurance; //выносливость
 
     public Person(String name, int endur){
         this.name = name;
@@ -11,26 +11,26 @@ public abstract class Person implements EnduranceChanger{
     }
 
     public void move(){
-	}
-	
-	public String getName(){
-		return name;
-	}
+    }
 
-	public int getEndurance(){
-		return endurance;
-	}
+    public String getName(){
+        return name;
+    }
 
-	public void setEndurance(int endur){
-		this.endurance = endur;
-	}
+    public int getEndurance(){
+        return endurance;
+    }
 
-	public abstract void rest(){};
+    public void setEndurance(int endur){
+        this.endurance = endur;
+    }
 
-	@Override
+    public abstract void rest(){};
+
+    @Override
     public void decEndurance(int points, Person person){
-	    person.endurance -= points;
-	}
+        person.endurance -= points;
+    }
 
     public void incEndurance(int points, Person person){
         person.endurance += points;

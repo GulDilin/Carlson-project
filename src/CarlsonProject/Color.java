@@ -1,19 +1,25 @@
 package CarlsonProject;
 
 public enum Color{
-    GREEN,
-    BLUE,
-    RED,
-    YELLOW;
+    GREEN(Effect.INFINITYJAM, "Зелено"),
+    BLUE(Effect.DECENDUR, "Сине"),
+    RED(Effect.ADDJAM, "Красно"),
+    YELLOW(Effect.ADDENDUR, "Желто");
 
-    Effect effect;
+    private Effect effect;
+    private String name;
 
-    private Color(){
-        switch(this){
-            case RED:
-                effect = new Effect() {
+    private Color(Effect eff, String name){
+        this.effect = eff;
+        this.name = name;
+    }
 
-                }
-        }
+    public Effect getEffect() {
+        return this.effect;
+    }
+
+    @Override
+    public String toString(){
+        return this.name;
     }
 }
