@@ -1,14 +1,20 @@
 package CarlsonProject;
 
-import com.sun.xml.internal.bind.v2.model.core.ID;
-
-final public static class Move {
-    private static Window[] windows;
+final public static class Move implements Talkable {
+    private static Window[] windows = {new Window(Color.RED), new Window(Color.GREEN), new Window(Color.BLUE), new Window(Color.YELLOW)};
     private static int currWindowID;
-    private static int targetWindowID;
+    private static int targetWindowID = -1; // -1 обозначает, что окно ещё не выбрано;
+    private Carlson carlson;
+    private Baby baby;
 
-    public Move(Window[] windows) {
-        Move.windows = windows;
+    public Move(Carlson carlson, Baby baby, int ID) {
+        this.carlson = carlson;
+        this.baby = baby;
+        Move.currWindowID = ID;
+    }
+
+    public Move(Carlson carlson, Baby baby){
+        this( carlson, baby, (int)(Math.random() * windows.length));
     }
 
     public static void setCurrWindowID(int ID){
@@ -31,5 +37,30 @@ final public static class Move {
         return windows;
     }
 
-    public void
+    //метод, который производит всё действие
+    public void go(){
+        do{
+            printStatus();
+            this.carlson.chooseWindow(Move.getWindows());
+            if (targetWindowID != -1){
+
+            }
+        } while ((currWindowID != -1) & (currWindowID != targetWindowID));
+
+        say("success");
+    }
+
+    @Override
+    public void printStatus(){
+        System.out.println();
+        System.out.println(targetWindowID == -1 ? "Окно - цель не выбрано" : "Малыш и карлсон ползут к " + Move.getTargetWindowID());
+    }
+
+    public void say(String what){
+        switch (what){
+            case "success":
+                System.out.println("Карлсон посмотрел в окно и всё увидел, профит!");
+                break;
+        }
+    }
 }
