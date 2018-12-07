@@ -26,6 +26,7 @@ public abstract class Person implements EnduranceChanger{
 
     public abstract void rest();
     public abstract void applyEffect(Window window);
+    public abstract void move();
 
     @Override
     public void decEndurance(int points, Person person){

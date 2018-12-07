@@ -1,22 +1,24 @@
 package CarlsonProject;
 
+import javax.sound.midi.Soundbank;
+
 final public class Baby extends Person implements Talkable {
 
     private int jamCounter;
     final private int RESTINC;
-    final private int BABYENDUR;
+    final private int MAXENDUR;
     final private int RESTMIN;
     private Effect effect;
     final private int MINUSENDUR = 5;
     final private int MAXJAM;
 
     public Baby(String name, int jam){
-        super(name,  40);
+        super(name,  30);
         this.jamCounter = jam;
         this.MAXJAM = jam;
-        this.BABYENDUR = 40;
+        this.MAXENDUR = 10;
         this.RESTINC = 5;
-        this.RESTMIN = BABYENDUR - RESTINC;
+        this.RESTMIN = MAXENDUR - RESTINC;
     }
 
     public int getJamCounter(){
@@ -27,12 +29,8 @@ final public class Baby extends Person implements Talkable {
         return MINUSENDUR;
     }
 
-    public void setJamCounter(int counter){
-        this.jamCounter = counter;
-    }
-
     public void die(){
-        System.out.println(this.toString() + " падает с крыши за ненадобностью");
+        say("dead");
     }
 
     public void decJam(){
@@ -50,17 +48,44 @@ final public class Baby extends Person implements Talkable {
     }
 
     @Override
+    public void move(){
+        if (effect != null) {
+            if (this.effect.nextTurn()) {
+                this.applyEffect(Move.getWindows()[Move.getTargetWindowID()]);
+            }
+        }
+        this.decEndurance(MINUSENDUR, this);
+    }
+
+    @Override
     public void applyEffect(Window window){
         effect = window.getColor().getEffect();
         switch (effect){
+            case ADDJAM:
+                if (effect.success() & (this.jamCounter < this.MAXJAM)) {
+                    this.jamCounter++;
+                }
             case INFINITYJAM:
-                this.jamCounter =  this.MAXJAM;
-            case DECENDUR:
-                this.decEndurance(MINUSENDUR, this);
+                if (effect.success()) {
+                    this.jamCounter = this.MAXJAM;
+                    say("jam");
+                }
                 break;
+
+            case DECENDUR:
+                if (effect.success()) {
+                    final int MINUSENDUR = 5;
+                    this.decEndurance(MINUSENDUR, this);
+                    System.out.println("Выносливость " + this.toString() + " уменьшена на " + MINUSENDUR + " пунктов" );
+                }
+                break;
+
             case ADDENDUR:
-                final int PLUSENDUR = 4;
-                this.addEndurance(PLUSENDUR, this);
+                if (effect.success()) {
+                    final int PLUSENDUR = 2;
+                    this.addEndurance(PLUSENDUR, this);
+                    System.out.println("Выносливость " + this.toString() + " увеличена на " + PLUSENDUR + " пунктов" );
+                }
                 break;
         }
     }
@@ -68,20 +93,24 @@ final public class Baby extends Person implements Talkable {
     @Override
     public void say(String what){
         switch (what){
-            case "":
+            case "dead":
+                System.out.println(this.toString() + " падает с крыши за ненадобностью");
                 break;
+            case "jam":
+                System.out.println("Эффект бесконечного варенья");
         }
     }
 
     @Override
     public void printStatus(){
-        System.out.printf("У малыша осталось %d банок варенья", this.getJamCounter());
+        System.out.println("У малыша осталось " + this.getJamCounter() + " банок варенья");
     }
 
     @Override
     public void rest(){
         if (this.getEndurance() <= RESTMIN){ addEndurance(RESTINC, this); }
-        else{ this.setEndurance(BABYENDUR); }
+        else{ this.setEndurance(MAXENDUR); }
+        System.out.println(this.toString() + "немного отдохнул");
     }
 
     @Override

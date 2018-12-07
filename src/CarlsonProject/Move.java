@@ -49,28 +49,41 @@ final public class Move implements Talkable {
     public void go(){
         System.out.println("Список окон:");
         for(Window window: windows){
-            System.out.println(window.getColor().toString());
+            System.out.println(window.getColor().toString()+"е");
         }
+        System.out.println();
+
         do{
             windows[0] = new Window(Color.RED);
             windows[1] = new Window(Color.GREEN);
             windows[2] = new Window(Color.BLUE);
-            windows[4] = new Window(Color.YELLOW);
+            windows[3] = new Window(Color.YELLOW);
             printStatus();
             this.carlson.chooseWindow(Move.getWindows());
             if (targetWindowID != -1){
-                if (currWindowID == targetWindowID){
-                    carlson.checkOpenWindow(windows[currWindowID]);
-                }
                 if ((carlson.getEndurance() > carlson.getMINUSENDUR()) & (baby.getEndurance() > baby.getMINUSENDUR())){
                     carlson.move();
+                    baby.move();
+                    System.out.println();
+                    printStatus();
                 } else {
+                    System.out.println("Недостаточно сил");
                     carlson.eatJam(baby);
+                    if (carlson.getJamWasEaten() == carlson.getJAMTURN()){
+                        baby.printStatus();
+                    } else {
+                        carlson.rest();
+                        baby.rest();
+                    }
 
+                }
+                if (currWindowID == targetWindowID){
+                    carlson.checkOpenWindow(windows[currWindowID]);
                 }
             } else {
                 carlson.chooseWindow(windows);
             }
+            System.out.println();
         } while ((currWindowID != -1) & (!carlson.hasSuccess()));
 
         say("success");
@@ -81,6 +94,8 @@ final public class Move implements Talkable {
     public void printStatus(){
         System.out.println(this.carlson.toString() + " и " + this.baby.toString() + " y " + windows[currWindowID].getColor().toString()+ "го окна");
         System.out.println(targetWindowID == -1 ? "Окно - цель не выбрано" : "Малыш и карлсон ползут к " + windows[targetWindowID].getColor().toString() + "му окну");
+        System.out.println("У  " + baby.toString() + " осталось " + baby.getEndurance() + " выносливости");
+        System.out.println("У  " + carlson.toString() + " осталось " + carlson.getEndurance() + " выносливости");
     }
 
     @Override

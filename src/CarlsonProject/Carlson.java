@@ -7,6 +7,7 @@ public class Carlson extends Person implements Talkable{
     final private int JAMTURN;
     final private int JAMADDENDUR;
     final private int MINUSENDUR;
+    final private int MAXENDUR;
     private Effect effect;
     private boolean success = false;
     /*
@@ -18,10 +19,11 @@ public class Carlson extends Person implements Talkable{
         *
      */
     public Carlson(String name){
-        super(name, 60);
-        this.JAMADDENDUR = 20;
-        this.JAMTURN = 6;
-        this.MINUSENDUR = 7;
+        super(name, 20);
+        this.MAXENDUR = 20;
+        this.JAMADDENDUR = 8;
+        this.JAMTURN = 3;
+        this.MINUSENDUR = 10;
     }
 
     public void chooseWindow(Window windows[]) {
@@ -31,7 +33,8 @@ public class Carlson extends Person implements Talkable{
         for (int i = 0; i < windows.length; i++) {
             if(windows[i].isSpeakFlag()) {
                 WindowMayChoose = i;
-                System.out.printf("Из #s го окна доносится крик", Move.getWindows()[WindowMayChoose].getColor().toString());
+                System.out.println();
+                System.out.println("Из " + Move.getWindows()[WindowMayChoose].getColor().toString() + "го окна доносится крик");
 
                 if (currentLen == 0) {
                     currentLen = Math.abs(i - Move.getCurrWindowID());
@@ -40,7 +43,7 @@ public class Carlson extends Person implements Talkable{
                 if (Math.abs(Move.getCurrWindowID() - i) <= currentLen) {
                     Move.setTargetWindowID(i);
                     currentLen = Math.abs(i - Move.getCurrWindowID());
-                    System.out.printf("Из #s го окна доносится крик", Move.getWindows()[WindowMayChoose].getColor().toString());
+                    //System.out.println("Из " + Move.getWindows()[WindowMayChoose].getColor().toString() + " го окна доносится крик");
                     say("chooseWindow");
                     applyEffect(Move.getWindows()[Move.getTargetWindowID()]);
                 }
@@ -52,15 +55,19 @@ public class Carlson extends Person implements Talkable{
         return this.jamWasEaten;
     }
 
+    public int getJAMTURN() {
+        return JAMTURN;
+    }
 
     //метод, осуществляющий движение между окнами
     public void move(){
-        this.effect.nextTurn();
+        if( effect.nextTurn()){ this.applyEffect(Move.getWindows()[Move.getTargetWindowID()]);}
         int change = 0;
         if (Move.getCurrWindowID() != Move.getTargetWindowID()) {
             change = (Move.getCurrWindowID() < Move.getTargetWindowID()) ? 1 : -1;
             Move.setCurrWindowID(Move.getCurrWindowID() + change);
         }
+        this.setEndurance(this.getEndurance()-MINUSENDUR);
         if (this.jamWasEaten > 0){
             this.jamWasEaten--;
         }
@@ -113,8 +120,10 @@ public class Carlson extends Person implements Talkable{
 
     @Override
     public void rest(){
-        if (this.getEndurance()<=55){ this.setEndurance(this.getEndurance()+5); }
-        else{ setEndurance(60); }
+        final int RESTMIN = 5;
+        if (this.getEndurance() <= RESTMIN){ this.setEndurance(this.getEndurance() + RESTMIN ); }
+        else{ setEndurance(MAXENDUR); }
+        System.out.println(this.toString() + " немного отдохнул");
     }
 
     @Override
@@ -123,7 +132,6 @@ public class Carlson extends Person implements Talkable{
         switch (effect){
             case DECENDUR:
                 if (effect.success()) {
-                    final int MINUSENDUR = 5;
                     this.decEndurance(MINUSENDUR, this);
                     System.out.println("Выносливость " + this.toString() + " уменьшена на " + MINUSENDUR + " пунктов" );
                 }
@@ -133,6 +141,7 @@ public class Carlson extends Person implements Talkable{
                 if (effect.success()) {
                     final int PLUSENDUR = 2;
                     this.addEndurance(PLUSENDUR, this);
+                    System.out.println("Выносливость " + this.toString() + " увеличена на " + PLUSENDUR + " пунктов" );
                 }
                 break;
         }
@@ -142,9 +151,10 @@ public class Carlson extends Person implements Talkable{
     public void say(String what){
         if (what == "chooseWindow"){
             System.out.println("Малыш и Карлсон ползут к " + Move.getWindows()[Move.getTargetWindowID()].getColor().toString() + "му окну");
+            System.out.println("К нему ближе всего");
         } else if (what == "jam"){
             System.out.println("Карлсон съел банку варенья");
-            System.out.println("Выносливость " + this.toString() + "повысилась");
+            System.out.println("Выносливость " + this.toString() + " повысилась");
         } else if (what == "sad"){
             System.out.println("Карлсон " + this.getName() + " расстроен");
         }
