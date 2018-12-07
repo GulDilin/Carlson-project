@@ -1,6 +1,6 @@
 package CarlsonProject;
 
-final public static class Move implements Talkable {
+final public class Move implements Talkable {
     private static Window[] windows = {new Window(Color.RED), new Window(Color.GREEN), new Window(Color.BLUE), new Window(Color.YELLOW)};
     private static int currWindowID;
     private static int targetWindowID = -1; // -1 обозначает, что окно ещё не выбрано;
@@ -33,29 +33,57 @@ final public static class Move implements Talkable {
         return Move.targetWindowID;
     }
 
+    public Carlson getCarlson() {
+        return carlson;
+    }
+
+    public Baby getBaby() {
+        return baby;
+    }
+
     public static Window[] getWindows(){
         return windows;
     }
 
     //метод, который производит всё действие
     public void go(){
+        System.out.println("Список окон:");
+        for(Window window: windows){
+            System.out.println(window.getColor().toString());
+        }
         do{
+            windows[0] = new Window(Color.RED);
+            windows[1] = new Window(Color.GREEN);
+            windows[2] = new Window(Color.BLUE);
+            windows[4] = new Window(Color.YELLOW);
             printStatus();
             this.carlson.chooseWindow(Move.getWindows());
             if (targetWindowID != -1){
+                if (currWindowID == targetWindowID){
+                    carlson.checkOpenWindow(windows[currWindowID]);
+                }
+                if ((carlson.getEndurance() > carlson.getMINUSENDUR()) & (baby.getEndurance() > baby.getMINUSENDUR())){
+                    carlson.move();
+                } else {
+                    carlson.eatJam(baby);
 
+                }
+            } else {
+                carlson.chooseWindow(windows);
             }
-        } while ((currWindowID != -1) & (currWindowID != targetWindowID));
+        } while ((currWindowID != -1) & (!carlson.hasSuccess()));
 
         say("success");
+        baby.die();
     }
 
     @Override
     public void printStatus(){
-        System.out.println();
-        System.out.println(targetWindowID == -1 ? "Окно - цель не выбрано" : "Малыш и карлсон ползут к " + Move.getTargetWindowID());
+        System.out.println(this.carlson.toString() + " и " + this.baby.toString() + " y " + windows[currWindowID].getColor().toString()+ "го окна");
+        System.out.println(targetWindowID == -1 ? "Окно - цель не выбрано" : "Малыш и карлсон ползут к " + windows[targetWindowID].getColor().toString() + "му окну");
     }
 
+    @Override
     public void say(String what){
         switch (what){
             case "success":

@@ -4,13 +4,12 @@ public abstract class Person implements EnduranceChanger{
 
     private String name;
     private int endurance; //выносливость
+    final private int MAXENDUR;
 
     public Person(String name, int endur){
         this.name = name;
         this.endurance = endur;
-    }
-
-    public void move(){
+        this.MAXENDUR = endur;
     }
 
     public String getName(){
@@ -25,15 +24,30 @@ public abstract class Person implements EnduranceChanger{
         this.endurance = endur;
     }
 
-    public abstract void rest(){};
+    public abstract void rest();
+    public abstract void applyEffect(Window window);
 
     @Override
     public void decEndurance(int points, Person person){
-        person.endurance -= points;
+        if (person.endurance - points >= 0){
+            person.endurance -= points;
+        }else { person.endurance = 0;}
     }
 
-    public void incEndurance(int points, Person person){
-        person.endurance += points;
+    @Override
+    public void addEndurance(int points, Person person){
+        if (person.endurance + points <= MAXENDUR){
+            person.endurance += points;
+        }else { person.endurance = MAXENDUR;}
     }
 
+    public boolean equals(Person p) {
+        return ((this.name == p.getName()) && (this.endurance == p.getEndurance()));
+    }
+
+    @Override
+    public int hashCode() {
+        System.out.println("Ха Ха метод то переопределён");
+        return 555;
+    }
 }

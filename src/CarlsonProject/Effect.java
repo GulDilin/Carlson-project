@@ -9,9 +9,20 @@ public enum Effect{
     private int turns;
     private double chance;
 
-    private Effect(int turns, double chance) {
+    Effect(int turns, double chance) {
         this.turns = turns;
         this.chance = chance;
+    }
+
+     public boolean nextTurn(){
+        boolean flag = false;
+        if (this.turns > 0){
+            this.turns--;
+            return true;
+        } else if (this.turns < 0) {
+            flag = true;
+        }
+        return flag;
     }
 
     public boolean success(){

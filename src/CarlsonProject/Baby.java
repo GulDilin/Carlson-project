@@ -3,19 +3,28 @@ package CarlsonProject;
 final public class Baby extends Person implements Talkable {
 
     private int jamCounter;
-    final private int RESTINC = 5;
-    final private int BABYENDUR = 70;
-    final private int RESTMIN = BABYENDUR - RESTINC;
+    final private int RESTINC;
+    final private int BABYENDUR;
+    final private int RESTMIN;
+    private Effect effect;
+    final private int MINUSENDUR = 5;
+    final private int MAXJAM;
 
-    public Baby(String name){
-        super(name, BABYENDUR);
-    }
-    public void followCarlson(Carlson carlson){
-
+    public Baby(String name, int jam){
+        super(name,  40);
+        this.jamCounter = jam;
+        this.MAXJAM = jam;
+        this.BABYENDUR = 40;
+        this.RESTINC = 5;
+        this.RESTMIN = BABYENDUR - RESTINC;
     }
 
     public int getJamCounter(){
         return this.jamCounter;
+    }
+
+    public int getMINUSENDUR() {
+        return MINUSENDUR;
     }
 
     public void setJamCounter(int counter){
@@ -23,7 +32,7 @@ final public class Baby extends Person implements Talkable {
     }
 
     public void die(){
-        System.out.println("малыш падает с крыши за ненадобностью");
+        System.out.println(this.toString() + " падает с крыши за ненадобностью");
     }
 
     public void decJam(){
@@ -41,11 +50,41 @@ final public class Baby extends Person implements Talkable {
     }
 
     @Override
+    public void applyEffect(Window window){
+        effect = window.getColor().getEffect();
+        switch (effect){
+            case INFINITYJAM:
+                this.jamCounter =  this.MAXJAM;
+            case DECENDUR:
+                this.decEndurance(MINUSENDUR, this);
+                break;
+            case ADDENDUR:
+                final int PLUSENDUR = 4;
+                this.addEndurance(PLUSENDUR, this);
+                break;
+        }
+    }
+
+    @Override
+    public void say(String what){
+        switch (what){
+            case "":
+                break;
+        }
+    }
+
+    @Override
+    public void printStatus(){
+        System.out.printf("У малыша осталось %d банок варенья", this.getJamCounter());
+    }
+
+    @Override
     public void rest(){
-        if (this.getEndurance() <= RESTMIN){ incEndurance(RESTINC, this); }
+        if (this.getEndurance() <= RESTMIN){ addEndurance(RESTINC, this); }
         else{ this.setEndurance(BABYENDUR); }
     }
 
+    @Override
     public String toString() {
         return "Малыш " + this.getName();
     }

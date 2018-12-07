@@ -7,7 +7,6 @@ package CarlsonProject;
     private boolean speakFlag;
     private double speakChance;
     private Color color;
-    private Effects effect;
 
     public Window(boolean OF, boolean HF, boolean SF, double SC, Color clr) {
         this.openFlag = OF;
@@ -18,7 +17,7 @@ package CarlsonProject;
     }
 
     public Window(Color color){
-        this((Math.random()>0.5), (Math.random()>0.5), (Math.random()>0.5), Math.random(), color);
+        this((Math.random()>0.5), (Math.random()>0.5), (Math.random()>0.5), 0.5, color);
     }
 
     public boolean isOpenFlag() {
@@ -30,14 +29,15 @@ package CarlsonProject;
     }
 
     public boolean isSpeakFlag() {
-            return this.speakFlag
+            return this.speakFlag;
     }
 
     public Color getColor() {
             return this.color;
     }
 
-    public Effects getEffect(){
-        return this.effect;
+    public boolean equals(Window w) {
+        return (this.openFlag == w.openFlag);
     }
+
 }

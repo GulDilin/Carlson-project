@@ -31,16 +31,6 @@ public class Effects{
         }
     }
 
-    final Effects turns(int num){
-        this.turns = num;
-        return this;
-    }
-
-    final Effects chance(int chance){
-        this.chance = chance;
-        return this;
-    }
-
     public boolean success(){
         return (this.chance - 1) > 0? true : false;
     }
