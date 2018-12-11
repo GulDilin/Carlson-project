@@ -37,7 +37,22 @@ package CarlsonProject;
     }
 
     public boolean equals(Window w) {
-        return (this.openFlag == w.openFlag);
+        return (this.openFlag == w.openFlag) &
+                (this.holeFlag == w.holeFlag) &
+                (this.speakFlag == w.speakFlag) &
+                (this.color == w.color);
     }
 
+    @Override
+    public int hashCode(){
+        int count = 0;
+        for (char c: this.color.toString().toCharArray()){
+            count += (int)c;
+        }
+        boolean flags[] = {this.holeFlag, this.openFlag, this.speakFlag};
+        for(boolean flag: flags){
+            count += flag ? 1 : 0;
+        }
+        return count;
+    }
 }

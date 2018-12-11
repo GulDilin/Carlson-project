@@ -6,7 +6,7 @@ public abstract class Person implements EnduranceChanger{
     private int endurance; //выносливость
     final private int MAXENDUR;
 
-    public Person(String name, int endur){
+    public Person(String name, int endur, int minusEndur){
         this.name = name;
         this.endurance = endur;
         this.MAXENDUR = endur;
@@ -22,6 +22,10 @@ public abstract class Person implements EnduranceChanger{
 
     public void setEndurance(int endur){
         this.endurance = endur;
+    }
+
+    public int getMAXENDUR() {
+        return MAXENDUR;
     }
 
     public abstract void rest();
@@ -43,12 +47,15 @@ public abstract class Person implements EnduranceChanger{
     }
 
     public boolean equals(Person p) {
-        return ((this.name == p.getName()) && (this.endurance == p.getEndurance()));
+        return ((this.name == p.getName()) && (this.MAXENDUR == p.getMAXENDUR()));
     }
 
     @Override
     public int hashCode() {
-        System.out.println("Ха Ха метод то переопределён");
-        return 555;
+        int x = this.MAXENDUR;
+        for(char c: this.name.toCharArray()){
+            x += (int) c;
+        }
+        return x % 7757;
     }
 }
