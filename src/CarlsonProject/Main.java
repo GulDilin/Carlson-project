@@ -6,6 +6,7 @@ public class Main{
         Baby baby = new Baby("Мистер Малыш", 2);
 
         Move move = new Move(carlson, baby);
-        move.go();
+        //move.go();
+        System.out.println(Move.getWindows()[1].hashCode());
     }
 }

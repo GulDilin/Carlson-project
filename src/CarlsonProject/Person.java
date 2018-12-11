@@ -6,7 +6,7 @@ public abstract class Person implements EnduranceChanger{
     private int endurance; //выносливость
     final private int MAXENDUR;
 
-    public Person(String name, int endur, int minusEndur){
+    public Person(String name, int endur ){
         this.name = name;
         this.endurance = endur;
         this.MAXENDUR = endur;
