@@ -15,8 +15,6 @@ public class Carlson extends Person implements Talkable{
         * @param jamWasEaten
         * @param JAMTURN Счётчик ходов до возможности употребить джем
         * @param DECENDUR Определяет на сколько на движение уменьшается выносливость
-        *
-        *
      */
     public Carlson(String name){
         super(name, 20);

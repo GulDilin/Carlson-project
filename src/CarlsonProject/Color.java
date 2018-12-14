@@ -22,4 +22,9 @@ public enum Color{
     public String toString(){
         return this.name;
     }
+
+    public boolean equals(Color c){
+        return (this.name() == c.name()) & (this.effect == c.getEffect());
+    }
+
 }

@@ -1,8 +1,6 @@
 package CarlsonProject;
 
-import javax.sound.midi.Soundbank;
-
-final public class Baby extends Person implements Talkable {
+public class Baby extends Person implements Talkable {
 
     private int jamCounter;
     final private int RESTINC;

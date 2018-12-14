@@ -8,16 +8,20 @@ package CarlsonProject;
     private double speakChance;
     private Color color;
 
-    public Window(boolean OF, boolean HF, boolean SF, double SC, Color clr) {
+    public Window(boolean OF, boolean HF, double SC, Color clr) {
         this.openFlag = OF;
         this.holeFlag = HF;
-        this.speakFlag = SF;
         this.speakChance = SC;
         this.color = clr;
+        this.speakFlag = (Math.random()>this.speakChance);
+    }
+
+    public Window(Color color, double SC){
+        this((Math.random()>0.5), (Math.random()>0.5),  SC, color);
     }
 
     public Window(Color color){
-        this((Math.random()>0.5), (Math.random()>0.5), (Math.random()>0.5), 0.5, color);
+        this(color, 0.5);
     }
 
     public boolean isOpenFlag() {
@@ -54,5 +58,10 @@ package CarlsonProject;
             count += flag ? 1 : 0;
         }
         return count;
+    }
+
+    @Override
+    public String toString(){
+        return this.getColor().toString() + "е окно";
     }
 }

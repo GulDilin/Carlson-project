@@ -1,0 +1,2 @@
+main-class: Carlson-project.Main
+class-path: lib/CarlsonLib.jar

@@ -1,6 +1,6 @@
 package CarlsonProject;
 
-final public class Move implements Talkable {
+public class Move implements Talkable {
     private static Window[] windows = {new Window(Color.RED), new Window(Color.GREEN), new Window(Color.BLUE), new Window(Color.YELLOW)};
     private static int currWindowID;
     private static int targetWindowID = -1; // -1 обозначает, что окно ещё не выбрано;

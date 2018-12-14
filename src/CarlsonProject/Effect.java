@@ -28,4 +28,9 @@ public enum Effect{
     public boolean success(){
         return (this.chance > Math.random());
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
