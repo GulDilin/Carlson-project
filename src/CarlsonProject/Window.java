@@ -1,27 +1,63 @@
 package CarlsonProject;
 
-    public class Window{
-
+public class Window{
     private boolean openFlag;
     private boolean holeFlag;
     private boolean speakFlag;
-    private double speakChance;
-    private Color color;
+    private boolean robberFlag;
+    private final double robberChance;
+    private final double speakChance;
+    private final double openChance;
+    private final double holeChance;
+    private final Color color;
 
-    public Window(boolean OF, boolean HF, double SC, Color clr) {
-        this.openFlag = OF;
-        this.holeFlag = HF;
-        this.speakChance = SC;
-        this.color = clr;
-        this.speakFlag = (Math.random()>this.speakChance);
+    public static class Builder{
+        private final Color color;
+
+        private double robberChance = 0.55D;
+        private double openChance = 0.5D;
+        private double holeChance = 0.7D;
+        private double speakChance = 0.4D;
+
+        public Builder(Color clr) {
+            this.color = clr;
+        }
+
+        public Builder holeChance(double val){
+            this.holeChance = val;
+            return this;
+        }
+
+        public Builder openChance(double val){
+            this.openChance = val;
+            return this;
+        }
+
+        public Builder speakChance(double val){
+            this.speakChance = val;
+            return this;
+        }
+
+        public Builder robberChance(double val){
+            this.robberChance = val;
+            return this;
+        }
+
+        public Window build(){
+            return new Window(this);
+        }
     }
 
-    public Window(Color color, double SC){
-        this((Math.random()>0.5), (Math.random()>0.5),  SC, color);
-    }
-
-    public Window(Color color){
-        this(color, 0.5);
+    private Window(Builder builder){
+        this.color = builder.color;
+        this.speakChance = builder.speakChance;
+        this.holeChance = builder.holeChance;
+        this.openChance = builder.openChance;
+        this.robberChance = builder.robberChance;
+        this.robberFlag = Math.random() < robberChance;
+        this.openFlag = Math.random() < openChance;
+        this.holeFlag =  Math.random() > holeChance;
+        this.speakFlag = Math.random() < speakChance;
     }
 
     public boolean isOpenFlag() {
@@ -36,6 +72,10 @@ package CarlsonProject;
             return this.speakFlag;
     }
 
+    public boolean isRobberFlag(){
+        return this.robberFlag;
+    }
+
     public Color getColor() {
             return this.color;
     }
@@ -47,6 +87,11 @@ package CarlsonProject;
                 (this.color == w.color);
     }
 
+    public void setFlags(){
+        this.speakFlag = Math.random() < this.speakChance;
+        this.openFlag = Math.random() < this.openChance;
+        this.holeFlag = Math.random() < this.holeChance;
+    }
     @Override
     public int hashCode(){
         int count = 0;

@@ -1,21 +1,34 @@
 package CarlsonProject;
 
 public class Move implements Talkable {
-    private static Window[] windows = {new Window(Color.RED), new Window(Color.GREEN), new Window(Color.BLUE), new Window(Color.YELLOW)};
+    private static Window[] windows = {
+            new Window.Builder(Color.RED).build(),
+            new Window.Builder(Color.GREEN).build(),
+            new Window.Builder(Color.BLUE).build(),
+            new Window.Builder(Color.YELLOW).build()
+    };
     private static int currWindowID;
     private static int targetWindowID = -1; // -1 обозначает, что окно ещё не выбрано;
     private Carlson carlson;
     private Baby baby;
 
-    public Move(Carlson carlson, Baby baby, int ID) {
+    public Move(Carlson carlson, Baby baby){
+        this.carlson = carlson;
+        this.baby = baby;
+        Move.currWindowID = (int)(Math.random() * windows.length);
+    }
+
+    public Move(Carlson carlson, Baby baby, int ID, Window[] windows) {
         this.carlson = carlson;
         this.baby = baby;
         Move.currWindowID = ID;
+        this.windows = windows;
     }
 
-    public Move(Carlson carlson, Baby baby){
-        this( carlson, baby, (int)(Math.random() * windows.length));
+    public Move(Carlson carlson, Baby baby, Window[] windows){
+        this( carlson, baby, (int)(Math.random() * windows.length), windows);
     }
+
 
     public static void setCurrWindowID(int ID){
         Move.currWindowID = ID;
@@ -33,13 +46,13 @@ public class Move implements Talkable {
         return Move.targetWindowID;
     }
 
-    public Carlson getCarlson() {
-        return carlson;
-    }
-
-    public Baby getBaby() {
-        return baby;
-    }
+//    public Carlson getCarlson() {
+//        return carlson;
+//    }
+//
+//    public Baby getBaby() {
+//        return baby;
+//    }
 
     public static Window[] getWindows(){
         return windows;
@@ -54,10 +67,9 @@ public class Move implements Talkable {
         System.out.println();
 
         do{
-            windows[0] = new Window(Color.RED);
-            windows[1] = new Window(Color.GREEN);
-            windows[2] = new Window(Color.BLUE);
-            windows[3] = new Window(Color.YELLOW);
+            for (Window window: windows){
+                window.setFlags();
+            }
             printStatus();
             this.carlson.chooseWindow(Move.getWindows());
             if (targetWindowID != -1){

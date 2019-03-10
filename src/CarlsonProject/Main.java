@@ -1,11 +1,16 @@
-import CarlsonProject.*;
+package CarlsonProject;
+public class Main {
+    public static void main(String[] args) {
+        Nurse nurse = new Nurse("Лучшая в мире");
+        NewBaby baby = new NewBaby("Мистер", 2);
+        NewCarlson carlson = new NewCarlson("В САМОМ РАСЦВЕТЕ СИЛ");
 
-public class Main{
-    public static void main(String[] args){
-        Carlson carlson = new Carlson("Карл");
-        Baby baby = new Baby("Мистер Малыш", 2);
-
-        Move move = new Move(carlson, baby);
-        move.go();
+        NewMove move = new NewMove(carlson, baby, nurse);
+        try {
+            move.go();
+        } catch (NurseDoesntHide e) {
+            System.out.println(e.getMessage());
+            System.out.println("Состояние видимости няни: " + nurse.isVisible());
+        }
     }
 }
