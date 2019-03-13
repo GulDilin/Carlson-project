@@ -80,18 +80,20 @@ public class Window{
             return this.color;
     }
 
-    public boolean equals(Window w) {
-        return (this.openFlag == w.openFlag) &
-                (this.holeFlag == w.holeFlag) &
-                (this.speakFlag == w.speakFlag) &
-                (this.color == w.color);
-    }
-
     public void setFlags(){
         this.speakFlag = Math.random() < this.speakChance;
         this.openFlag = Math.random() < this.openChance;
         this.holeFlag = Math.random() < this.holeChance;
     }
+
+    public boolean equals(Window otherWindow) {
+        return ((this.openChance == otherWindow.openChance)
+                && (this.speakChance == otherWindow.speakChance)
+                && (this.holeChance == otherWindow.holeChance)
+                && (this.robberChance == otherWindow.robberChance)
+                && (this.color == otherWindow.color));
+    }
+
     @Override
     public int hashCode(){
         int count = 0;
@@ -107,6 +109,10 @@ public class Window{
 
     @Override
     public String toString(){
-        return this.getColor().toString() + "е окно";
+        return this.getColor().toString() + "е окно \n" +
+                "speakChance: " + this.speakChance +
+                "\n holeChance: " + this.holeChance +
+                "\n robberChance: " + this.robberChance +
+                "\n openChance: " + this.openChance ;
     }
 }

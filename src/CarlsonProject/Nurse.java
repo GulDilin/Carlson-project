@@ -11,7 +11,7 @@ public class Nurse implements Talkable{
     }
 
     public Nurse(String name){
-        this(name, Math.random() * 100);
+        this(name, Math.random() * 50);
     }
 
     public String getName(){
