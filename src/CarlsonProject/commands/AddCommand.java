@@ -1,19 +1,37 @@
 package CarlsonProject.commands;
 
-import CarlsonProject.Window;
 import CarlsonProject.WindowsArrayList;
+import static CarlsonProject.WindowsArrayList.*;
 
 public class AddCommand implements Command {
+
+    /**
+     * Command, which realise add new elem to collection from user input
+     */
     private String line;
     private WindowsArrayList windows;
 
-    public AddCommand(String line, WindowsArrayList windows){
+    /**
+     *
+     * @param line string with window obj
+     * @param windows collection
+     *
+     */
+    public AddCommand(WindowsArrayList windows, String line){
+        System.out.println(line);
         this.line = line;
         this.windows = windows;
     }
 
     @Override
     public void execute(){
-        windows.add(WindowsArrayList.fromJSONToWindow(WindowsArrayList.fromStringToJSONString(line)));
+        try{
+            if (fromJSONToWindow(fromStringToJSONObject(line)) != null) {
+                windows.add(fromJSONToWindow(fromStringToJSONObject(line)));
+                //System.out.println("Elem was added");
+            }
+        } catch (NullPointerException e){
+            System.out.println("Get Null Obj");
+        }
     }
 }
