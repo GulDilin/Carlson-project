@@ -32,7 +32,7 @@ public class Carlson extends Person implements Talkable{
             if(windows[i].isSpeakFlag()) {
                 WindowMayChoose = i;
                 System.out.println();
-                System.out.println("Из " + Move.getWindows()[WindowMayChoose].getColor().toString() + "го окна доносится крик");
+                System.out.println("Из " + Move.getWindows()[WindowMayChoose].getColor().getColorName() + "го окна доносится крик");
 
                 if (currentLen == 0) {
                     currentLen = Math.abs(i - Move.getCurrWindowID());
@@ -41,7 +41,7 @@ public class Carlson extends Person implements Talkable{
                 if (Math.abs(Move.getCurrWindowID() - i) <= currentLen) {
                     Move.setTargetWindowID(i);
                     currentLen = Math.abs(i - Move.getCurrWindowID());
-                    //System.out.println("Из " + Move.getWindows()[WindowMayChoose].getColor().toString() + " го окна доносится крик");
+                    //System.out.println("Из " + Move.getWindows()[WindowMayChoose].getColor().getColorName() + " го окна доносится крик");
                     say("chooseWindow");
                     applyEffect(Move.getWindows()[Move.getTargetWindowID()]);
                 }
@@ -88,10 +88,10 @@ public class Carlson extends Person implements Talkable{
 
     public void checkOpenWindow(Window window){
         if (window.isOpenFlag()){
-            System.out.println(window.getColor().toString() + "е окно открыто");
+            System.out.println(window.getColor().getColorName() + "е окно открыто");
             searchHole(window);
         } else {
-            System.out.println(window.getColor().toString() + "е окно закрыто");
+            System.out.println(window.getColor().getColorName() + "е окно закрыто");
             say("sad");
         }
     }
@@ -99,10 +99,10 @@ public class Carlson extends Person implements Talkable{
     // Проверяет есть ли дыра в окне
     public void searchHole(Window window){
         if (window.isHoleFlag()){
-            System.out.println(this.toString() + " нашёл дыру в занавесках " + window.getColor().toString() + "го окна");
+            System.out.println(this.toString() + " нашёл дыру в занавесках " + window.getColor().getColorName() + "го окна");
             this.success = true;
         } else {
-            System.out.println("Чёрт, дыры в " + window.getColor().toString() + "м окне нет");
+            System.out.println("Чёрт, дыры в " + window.getColor().getColorName() + "м окне нет");
             say("sad");
         }
     }
@@ -148,7 +148,7 @@ public class Carlson extends Person implements Talkable{
     @Override
     public void say(String what){
         if (what == "chooseWindow"){
-            System.out.println("Малыш и Карлсон ползут к " + Move.getWindows()[Move.getTargetWindowID()].getColor().toString() + "му окну");
+            System.out.println("Малыш и Карлсон ползут к " + Move.getWindows()[Move.getTargetWindowID()].getColor().getColorName() + "му окну");
             System.out.println("К нему ближе всего");
         } else if (what == "jam"){
             System.out.println("Карлсон съел банку варенья");
