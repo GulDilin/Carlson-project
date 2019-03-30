@@ -1,15 +1,19 @@
-package CarlsonProject.plot;
+package CarlsonProject;
 
 import CarlsonProject.UserHandler;
 import CarlsonProject.WindowsArrayList;
+import CarlsonProject.plot.*;
 
 import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        String fileName = System.getenv("FILENAME");
+//        String fileName = System.getenv("FILENAME");
+        String fileName = "C:\\Users\\zheny\\Documents\\Progs\\Carlson-project\\src\\default.json";
+        fileName = "src/default.json";
         ArrayList<Window> list = new ArrayList<Window>();
         WindowsArrayList windows = new WindowsArrayList(list);
+        windows.importFromFile(fileName);
         final String HELP = "           Команды : \n" +
                 "add {element}:          |добавить новый элемент в коллекцию.\n" +
                 "insert index {element}: |добавить новый элемент в коллекцию по индексу.\n" +
@@ -24,11 +28,6 @@ public class Main {
                 "exit:                   |выход из программы.\n" +
                 "help:                   |вывод списка доступных команд.\n";
 
-        UserHandler.getInput("Type command:", HELP, windows);
-
-        Nurse nurse = new Nurse("Лучшая в мире");
-        NewBaby baby = new NewBaby("Мистер", 2);
-        NewCarlson carlson = new NewCarlson("В САМОМ РАСЦВЕТЕ СИЛ");
-        NewMove move = new NewMove(carlson, baby, nurse);
+        UserHandler.getInput("Type command:", HELP, windows, fileName);
     }
 }
