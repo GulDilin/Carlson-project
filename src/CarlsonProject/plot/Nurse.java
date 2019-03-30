@@ -1,4 +1,4 @@
-package CarlsonProject;
+package CarlsonProject.plot;
 
 public class Nurse implements Talkable{
     private String name;

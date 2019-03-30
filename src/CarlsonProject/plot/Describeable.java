@@ -1,4 +1,4 @@
-package CarlsonProject;
+package CarlsonProject.plot;
 
 interface Describeable {
     boolean talk();

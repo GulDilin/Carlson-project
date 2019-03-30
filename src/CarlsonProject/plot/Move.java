@@ -1,4 +1,4 @@
-package CarlsonProject;
+package CarlsonProject.plot;
 
 public class Move implements Talkable {
     private static Window[] windows = {

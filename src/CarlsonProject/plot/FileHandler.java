@@ -1,4 +1,4 @@
-package CarlsonProject;
+package CarlsonProject.plot;
 import java.io.*;
 
 public class FileHandler{

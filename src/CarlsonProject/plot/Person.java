@@ -1,4 +1,5 @@
-package CarlsonProject;
+package CarlsonProject.plot;
+
 //abstract class for realise Carlson and Baby
 public abstract class Person implements EnduranceChanger{
 

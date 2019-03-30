@@ -1,4 +1,4 @@
-package CarlsonProject;
+package CarlsonProject.plot;
 
 public enum Color{
     GREEN(Effect.INFINITYJAM, "Зелено"),

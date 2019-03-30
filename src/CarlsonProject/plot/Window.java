@@ -1,4 +1,4 @@
-package CarlsonProject;
+package CarlsonProject.plot;
 
 public class Window{
     private boolean openFlag;
@@ -94,6 +94,12 @@ public class Window{
                 && (this.color == otherWindow.color));
     }
 
+    public double getChanceSum(){
+        return this.holeChance +
+                this.openChance +
+                this.robberChance +
+                this.speakChance;
+    }
     @Override
     public int hashCode(){
         int count = 0;
@@ -109,10 +115,10 @@ public class Window{
 
     @Override
     public String toString(){
-        return "{color:"+ this.getColor().toString()  +
-                ";speakChance: " + this.speakChance +
-                "; holeChance: " + this.holeChance +
-                "; robberChance: " + this.robberChance +
-                "; openChance: " + this.openChance + "}";
+        return "{\"color\":\""+ this.getColor().toString()  +
+                "\", \"speakChance\": \"" + this.speakChance +
+                "\", \"holeChance\": \"" + this.holeChance +
+                "\", \"robberChance\": \"" + this.robberChance +
+                "\", \"openChance\": \"" + this.openChance + "\"}";
     }
 }

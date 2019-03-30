@@ -1,4 +1,5 @@
-package CarlsonProject;
+package CarlsonProject.plot;
+
 public class NewMove{
     private Nurse nurse;
     private NewCarlson carlson;

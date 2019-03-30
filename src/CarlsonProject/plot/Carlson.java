@@ -1,6 +1,6 @@
-package CarlsonProject;
+package CarlsonProject.plot;
 
-public class Carlson extends Person implements Talkable{
+public class Carlson extends Person implements Talkable {
 
     private int WindowMayChoose;
     private int jamWasEaten;

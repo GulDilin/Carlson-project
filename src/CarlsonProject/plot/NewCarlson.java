@@ -1,4 +1,4 @@
-package CarlsonProject;
+package CarlsonProject.plot;
 
 public class NewCarlson extends Carlson implements Describeable{
     private double speakVolume;

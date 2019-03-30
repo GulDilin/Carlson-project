@@ -1,4 +1,4 @@
-package CarlsonProject;
+package CarlsonProject.plot;
 
 public enum Effect{
     INFINITYJAM(-1, 0.5D),

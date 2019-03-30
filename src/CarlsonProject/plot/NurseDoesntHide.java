@@ -1,4 +1,4 @@
-package CarlsonProject;
+package CarlsonProject.plot;
 
 public class NurseDoesntHide extends Exception{
     public NurseDoesntHide(String message){
