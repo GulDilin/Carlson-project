@@ -17,10 +17,12 @@ public class AddCommand implements Command {
      * @param windows collection
      *
      */
-    public AddCommand(WindowsArrayList windows, String line){
-        System.out.println(line);
+    public AddCommand(WindowsArrayList windows, String line) throws NoElementException {
         this.line = line;
         this.windows = windows;
+        if (this.line.equalsIgnoreCase("{}")){
+            throw new NoElementException("No element error");
+        }
     }
 
     @Override
@@ -28,7 +30,6 @@ public class AddCommand implements Command {
         try{
             if (fromJSONToWindow(fromStringToJSONObject(line)) != null) {
                 windows.add(fromJSONToWindow(fromStringToJSONObject(line)));
-                //System.out.println("Elem was added");
             }
         } catch (NullPointerException e){
             System.out.println("Get Null Obj");

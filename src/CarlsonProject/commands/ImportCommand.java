@@ -15,6 +15,7 @@ public class ImportCommand implements  Command{
     public ImportCommand(WindowsArrayList windows, String fileName){
         this.windows = windows;
         this.fileName = fileName;
+
     }
 
     @Override

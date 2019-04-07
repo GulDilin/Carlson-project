@@ -13,9 +13,12 @@ public class RemoveCommand implements Command {
      * @param windows collection
      * @param s String with elem
      */
-    public RemoveCommand(WindowsArrayList windows, String s){
+    public RemoveCommand(WindowsArrayList windows, String s) throws NoElementException {
         this.windows = windows;
         this.s = s;
+        if (this.s.equalsIgnoreCase("{}")){
+            throw new NoElementException("No element error");
+        }
     }
 
     @Override

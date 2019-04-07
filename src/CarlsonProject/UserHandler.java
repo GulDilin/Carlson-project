@@ -19,6 +19,12 @@ import CarlsonProject.plot.Nurse;
 
 public class UserHandler {
 
+    /**
+     * convert string to JSON string
+     *
+     * @param s String
+     * @return String line, contains JSON object
+     */
     public static String fromUserStringToJSONString( String s) {
         String result = s.toLowerCase().trim()
                 .replaceAll("[\\s]{2,}", " ")
@@ -73,15 +79,15 @@ public class UserHandler {
             try{
                 line = s[1];
             } catch (ArrayIndexOutOfBoundsException e){
-                //System.out.println("error");
+                //ignore
             }
 
             switch (s[0]) {
                 case "remove":
                     try {
                         command = new RemoveCommand(windows, fromUserStringToJSONString(line));
-                    } catch (Exception e) {
-                        System.out.println("No element");
+                    } catch (NoElementException e) {
+                        System.out.println(e.getMessage());
                     }
                     break;
 
@@ -131,20 +137,17 @@ public class UserHandler {
 
                 case "insert":
                     try {
-                        command = new InsertCommand(windows, fromUserStringToJSONString(line));
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        System.out.println("No element error");
+                        command = new InsertCommand(windows, line);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
                     }
                     break;
 
                 case "add":
                     try {
-                        if ((line.replaceAll(" ","") == "")){
-                            System.out.println("No element error");
-                        }
                         command = new AddCommand(windows, fromUserStringToJSONString(line));
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        System.out.println("No element error");
+                    } catch (NoElementException e) {
+                        System.out.println(e.getMessage());
                     }
                     break;
 

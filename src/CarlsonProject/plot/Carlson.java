@@ -1,7 +1,18 @@
 package CarlsonProject.plot;
 
+/**
+ * class for Carlson
+ */
 public class Carlson extends Person implements Talkable {
 
+    /**
+     * @param WindowMayChoose window, which can be choosen
+     * @param MINUSENDUR
+     * @param JAMADDENDUR endurance points, which adds from one jam
+     * @param jamWasEaten
+     * @param JAMTURN Counter for moves before appear ability to eat jam
+     * @param DECENDUR Num of endurance for one move
+     */
     private int WindowMayChoose;
     private int jamWasEaten;
     final private int JAMTURN;
@@ -10,12 +21,7 @@ public class Carlson extends Person implements Talkable {
     final private int MAXENDUR;
     private Effect effect;
     private boolean success = false;
-    /*
-        * @param WindowMayChoose
-        * @param jamWasEaten
-        * @param JAMTURN Счётчик ходов до возможности употребить джем
-        * @param DECENDUR Определяет на сколько на движение уменьшается выносливость
-     */
+
     public Carlson(String name){
         super(name, 20);
         this.MAXENDUR = 20;
@@ -24,15 +30,20 @@ public class Carlson extends Person implements Talkable {
         this.MINUSENDUR = 10;
     }
 
+    /**
+     *
+     * @param windows array with windows
+     * window value sets in Move
+     */
     public void chooseWindow(Window windows[]) {
-        //принимает массив всех окон и выбирает из него одно
-        // Значение выбранного окна присваивается полю в классе Move
         int currentLen = 0;
         for (int i = 0; i < windows.length; i++) {
             if(windows[i].isSpeakFlag()) {
                 WindowMayChoose = i;
                 System.out.println();
-                System.out.println("Из " + Move.getWindows()[WindowMayChoose].getColor().getColorName() + "го окна доносится крик");
+                System.out.println("Из "
+                        + Move.getWindows()[WindowMayChoose].getColor().getColorName()
+                        + "го окна доносится крик");
 
                 if (currentLen == 0) {
                     currentLen = Math.abs(i - Move.getCurrWindowID());
@@ -41,7 +52,6 @@ public class Carlson extends Person implements Talkable {
                 if (Math.abs(Move.getCurrWindowID() - i) <= currentLen) {
                     Move.setTargetWindowID(i);
                     currentLen = Math.abs(i - Move.getCurrWindowID());
-                    //System.out.println("Из " + Move.getWindows()[WindowMayChoose].getColor().getColorName() + " го окна доносится крик");
                     say("chooseWindow");
                     applyEffect(Move.getWindows()[Move.getTargetWindowID()]);
                 }
@@ -57,10 +67,12 @@ public class Carlson extends Person implements Talkable {
         return JAMTURN;
     }
 
-    //метод, осуществляющий движение между окнами
+    /**
+     * method, which do base move
+     */
     public void move(){
         if( effect.nextTurn()){ this.applyEffect(Move.getWindows()[Move.getTargetWindowID()]);}
-        int change = 0;
+        int change;
         if (Move.getCurrWindowID() != Move.getTargetWindowID()) {
             change = (Move.getCurrWindowID() < Move.getTargetWindowID()) ? 1 : -1;
             Move.setCurrWindowID(Move.getCurrWindowID() + change);
@@ -96,7 +108,10 @@ public class Carlson extends Person implements Talkable {
         }
     }
 
-    // Проверяет есть ли дыра в окне
+    /**
+     * check hole in window
+     * @param window window, which will be checked
+     */
     public void searchHole(Window window){
         if (window.isHoleFlag()){
             System.out.println(this.toString() + " нашёл дыру в занавесках " + window.getColor().getColorName() + "го окна");

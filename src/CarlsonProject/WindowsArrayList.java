@@ -17,7 +17,8 @@ public class WindowsArrayList {
      */
     private ArrayList<Window> windows;
     private Date date;
-    private String defaultFileName = "C:\\Users\\zheny\\Documents\\Progs\\Carlson-project\\src\\default.json";
+    private String defaultFileName = "src/default.json";
+    //private String defaultFileName = System.getenv(FILENAME);
     private static HashMap<String, Color> colorMap;
     static {
         colorMap = new HashMap<String, Color>();
@@ -33,7 +34,6 @@ public class WindowsArrayList {
     public WindowsArrayList(ArrayList<Window> windows){
         this.windows = windows;
         this.date = new Date();
-        this.defaultFileName = System.getenv("FILENAME");
     }
 
 
@@ -64,16 +64,34 @@ public class WindowsArrayList {
     }
 
     /**
-     * method for add new elem in collection
+     * method for add new elem to the end of collection
      * @param window new elem
      */
     public void add(Window window){
-        if (this.windows.add(window)){
+        if ((window != null)&(!windows.contains(window))&(this.windows.add(window))){
             System.out.println("Element was added");
         } else {
-            System.out.println("Add error");
+            System.out.println("Elem already exist");
         }
-//         save(defaultFileName);
+    }
+
+    /**
+     * method for add new elem with index in collection
+     * @param index int index of elem
+     * @param window new elem
+     */
+    public void add(int index, Window window){
+        if ((window != null) & (!windows.contains(window))){
+            try {
+                this.windows.add(index, window);
+                System.out.println("Element was added");
+            } catch (IndexOutOfBoundsException e){
+                System.out.println("Add error");
+            }
+
+        } else {
+            System.out.println("Elem already exist");
+        }
     }
 
     /**
@@ -85,9 +103,7 @@ public class WindowsArrayList {
                         otherwindow.getChanceSum() ));
     }
 
-    public void add(int index, Window window){
-        this.windows.add(index, window);
-    }
+
 
     public int size(){
         return windows.size();
@@ -146,6 +162,7 @@ public class WindowsArrayList {
             object = (JSONObject) parcer.parse(s);
         } catch (ParseException parsE){
             System.out.println("Ошибка получения объекта окна");
+            throw new NullPointerException();
         }
         return object;
     }
@@ -190,7 +207,7 @@ public class WindowsArrayList {
             }
             return windowBuilder.build();
         } catch (NoSuchColorException | NullPointerException colorE){
-            System.out.println(colorE.getMessage());
+            //System.out.println(colorE.getMessage());
         }
         return window;
     }

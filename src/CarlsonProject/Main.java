@@ -26,7 +26,7 @@ public class Main {
                 "remove_last:            |удалить последний элемент.\n" +
                 "start:                  |запустить основную программу для настроенной коллекции.\n" +
                 "exit:                   |выход из программы.\n" +
-                "help:                   |вывод списка доступных команд.\n";
+                "help {command}:         |вывод списка доступных команд / инструкции по использованию команды.\n";
 
         UserHandler.getInput("Type command:", HELP, windows, fileName);
     }
