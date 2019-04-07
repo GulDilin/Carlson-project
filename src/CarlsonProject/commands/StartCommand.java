@@ -33,10 +33,8 @@ public class StartCommand implements Command{
             } catch (NurseDoesntHide e) {
                 System.out.println(e.getMessage());
                 System.out.println("Состояние видимости няни: " + nurse.isVisible());
-            } catch (NoRobersException ex){
+            } catch (NoRobersException | CarlsonAndBabyStatusNotMatch ex){
                 System.out.println( ex.getMessage());
-            } catch (CarlsonAndBabyStatusNotMatch exx){
-                System.out.println( exx.getMessage());
             }
         } else {
             System.out.println("No windows in collection");

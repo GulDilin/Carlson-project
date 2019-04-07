@@ -113,11 +113,9 @@ public class WindowsArrayList {
      * @param win window, which need to remove from collection
      */
     public void remove(Window win){
-        try {
-            if (windows.removeIf(window -> window.equals(win))){
-                System.out.println("Elem was deleted");
-            }
-        } catch (NullPointerException e){
+        if (windows.removeIf(window -> window.equals(win))){
+            System.out.println("Elem was deleted");
+        }else{
             System.out.println("No such elem");
         }
     }
@@ -191,10 +189,8 @@ public class WindowsArrayList {
                 }
             }
             return windowBuilder.build();
-        } catch (NoSuchColorException colorE){
+        } catch (NoSuchColorException | NullPointerException colorE){
             System.out.println(colorE.getMessage());
-        } catch (NullPointerException ex){
-            System.out.println( ex.getMessage());
         }
         return window;
     }
