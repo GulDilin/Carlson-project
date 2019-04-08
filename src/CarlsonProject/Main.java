@@ -8,12 +8,17 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-//        String fileName = System.getenv("FILENAME");
-        String fileName = "C:\\Users\\zheny\\Documents\\Progs\\Carlson-project\\src\\default.json";
-        fileName = "src/default.json";
+        String fileName;
+        //fileName = "src/default.json";
         ArrayList<Window> list = new ArrayList<Window>();
         WindowsArrayList windows = new WindowsArrayList(list);
-        windows.importFromFile(fileName);
+        try{
+            fileName = System.getenv("FILENAME");
+            windows.importFromFile(fileName);
+        } catch (NullPointerException e){
+            System.out.println("Env get error");
+        }
+
         final String HELP = "           Команды : \n" +
                 "add {element}:          |добавить новый элемент в коллекцию.\n" +
                 "insert index {element}: |добавить новый элемент в коллекцию по индексу.\n" +
@@ -28,6 +33,6 @@ public class Main {
                 "exit:                   |выход из программы.\n" +
                 "help {command}:         |вывод списка доступных команд / инструкции по использованию команды.\n";
 
-        UserHandler.getInput("Type command:", HELP, windows, fileName);
+        UserHandler.getInput("Type command:", HELP, windows, fileName = "");
     }
 }

@@ -1,5 +1,5 @@
 [ 
 {"color":"GREEN", "speakChance": "0.6", "holeChance": "0.7", "robberChance": "0.55", "openChance": "0.5"}, 
-{"color":"YELLOW", "speakChance": "0.6", "holeChance": "0.7", "robberChance": "0.55", "openChance": "0.5"}, 
+{"color":"YELLOW", "speakChance": "0.6", "holeChance": "0.7", "robberChance": "0.55", "openChance": "0.5"}
 {"color":"BLUE", "speakChance": "0.6", "holeChance": "0.7", "robberChance": "0.55", "openChance": "0.5"} 
 ]

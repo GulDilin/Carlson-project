@@ -2,7 +2,7 @@ package CarlsonProject;
 
 import java.util.*;
 import java.io.*;
-
+import java.util.concurrent.atomic.AtomicInteger;
 import CarlsonProject.plot.Color;
 import CarlsonProject.plot.NoSuchColorException;
 import CarlsonProject.plot.Window;
@@ -99,8 +99,7 @@ public class WindowsArrayList {
      */
     public void sort(){
         this.windows.sort((Window window, Window otherwindow) ->
-                Double.compare(window.getChanceSum(),
-                        otherwindow.getChanceSum() ));
+                window.compareTo(otherwindow));
     }
 
 
@@ -109,19 +108,8 @@ public class WindowsArrayList {
         return windows.size();
     }
 
-    public void removeLast()
-    {
-        double minSum = -1.0D;
-        for(Window w: windows){
-            if (minSum == -1.0D) {
-                minSum = w.getChanceSum();
-            }
-            if(w.getChanceSum() < minSum){
-                minSum = w.getChanceSum();
-            }
-        }
-        final double MINSUM = minSum;
-        windows.removeIf(window -> window.getChanceSum() == MINSUM);
+    public void removeLast(){
+        windows.removeIf(window -> window == windows.stream().min(Window::compareTo).get());
     }
 
     /**
@@ -136,9 +124,6 @@ public class WindowsArrayList {
         }
     }
 
-//    public Window[] toArray(){
-//        return (Window[]) windows.toArray();
-//    }
     public Window[] toArray(){
         Window[] array = new Window[windows.size()];
         windows.forEach(window -> array[windows.indexOf(window)] = window);
@@ -207,7 +192,7 @@ public class WindowsArrayList {
             }
             return windowBuilder.build();
         } catch (NoSuchColorException | NullPointerException colorE){
-            //System.out.println(colorE.getMessage());
+            //ignore
         }
         return window;
     }
@@ -250,7 +235,6 @@ public class WindowsArrayList {
                 }
                 str += "]";
                 writer.write(str);
-                writer.close();
             } catch (IOException e) {
                 System.out.println("Saved was not succeded");
             }
@@ -276,9 +260,7 @@ public class WindowsArrayList {
         File file = new File(fileName);
         System.out.println("Try to import collection from file " + fileName);
         String content = "";
-        FileReader reader = null;
-        try {
-            reader = new FileReader(file);
+        try (FileReader reader = new FileReader(new File(fileName))){;
             windows.removeAll(windows);
             char[] chars = new char[(int) file.length()];
 
@@ -296,21 +278,13 @@ public class WindowsArrayList {
             catch (IOException ex){
                 System.out.println(ex.getMessage());
             }
-        }catch (FileNotFoundException e){
-//            if (fileName != "../default.json") {
-//                System.out.println("Нет такого файла, коллекция будет загружена из default.json");
-//                importFromFile("../default.json");
-//            } else {
+        }catch (NullPointerException | IOException e){
                 System.out.println("No such file!");
-//            }
-        } finally {
-            if (reader != null){
-                try {
-                    reader.close();
-                } catch (IOException ex){
-                    //ignore
-                }
-            }
         }
     }
+
+}
+
+interface Counter{
+    Double getMinSum(Window windows);
 }

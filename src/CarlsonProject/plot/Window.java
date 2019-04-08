@@ -1,6 +1,6 @@
 package CarlsonProject.plot;
 
-public class Window{
+public class Window implements Comparable{
     private boolean openFlag;
     private boolean holeFlag;
     private boolean speakFlag;
@@ -111,6 +111,11 @@ public class Window{
             count += flag ? 1 : 0;
         }
         return count;
+    }
+
+    @Override
+    public int compareTo(Object w){
+        return Double.compare(this.getChanceSum(), ((Window)w).getChanceSum());
     }
 
     @Override
