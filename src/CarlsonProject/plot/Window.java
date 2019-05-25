@@ -1,6 +1,22 @@
 package CarlsonProject.plot;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+import CarlsonProject.commands.Command;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
+public class Window implements Serializable, Comparable {
+=======
 public class Window implements Comparable{
+>>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
+=======
+public class Window implements Comparable{
+>>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
     private boolean openFlag;
     private boolean holeFlag;
     private boolean speakFlag;
@@ -23,22 +39,22 @@ public class Window implements Comparable{
             this.color = clr;
         }
 
-        public Builder holeChance(double val){
+        public Builder holeChance(Double val){
             this.holeChance = val;
             return this;
         }
 
-        public Builder openChance(double val){
+        public Builder openChance(Double val){
             this.openChance = val;
             return this;
         }
 
-        public Builder speakChance(double val){
+        public Builder speakChance(Double val){
             this.speakChance = val;
             return this;
         }
 
-        public Builder robberChance(double val){
+        public Builder robberChance(Double val){
             this.robberChance = val;
             return this;
         }
@@ -100,6 +116,21 @@ public class Window implements Comparable{
                 this.robberChance +
                 this.speakChance;
     }
+
+    public int getSize(){
+        try {
+            ByteArrayOutputStream byteObject = new ByteArrayOutputStream();
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteObject);
+            objectOutputStream.writeObject(this);
+            objectOutputStream.flush();
+            objectOutputStream.close();
+            byteObject.close();
+            return byteObject.toByteArray().length;
+        }catch (IOException e){
+            return 0;
+        }
+    }
+
     @Override
     public int hashCode(){
         int count = 0;
@@ -125,5 +156,10 @@ public class Window implements Comparable{
                 "\", \"holeChance\": \"" + this.holeChance +
                 "\", \"robberChance\": \"" + this.robberChance +
                 "\", \"openChance\": \"" + this.openChance + "\"}";
+    }
+
+    @Override
+    public int compareTo(Object w){
+        return Double.compare(this.getChanceSum(), ((Window)w).getChanceSum());
     }
 }

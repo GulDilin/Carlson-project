@@ -1,6 +1,8 @@
 package CarlsonProject.plot;
 
-public class Nurse implements Talkable{
+import java.io.Serializable;
+
+public class Nurse implements Talkable, Serializable {
     private String name;
     final private double HEARNESS;
     private boolean isVisible = true;

@@ -1,7 +1,9 @@
 package CarlsonProject.plot;
 
+import java.io.Serializable;
+
 //abstract class for realise Carlson and Baby
-public abstract class Person implements EnduranceChanger{
+public abstract class Person implements EnduranceChanger, Serializable {
 
     private String name;
     private int endurance; //выносливость

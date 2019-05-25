@@ -1,6 +1,8 @@
 package CarlsonProject.plot;
 
-public enum Effect{
+import java.io.Serializable;
+
+public enum Effect implements Serializable {
     INFINITYJAM(-1, 0.5D),
     DECENDUR(5, 0.4D),
     ADDENDUR(2, 0.6D),

@@ -2,22 +2,35 @@ package CarlsonProject.commands;
 
 import CarlsonProject.WindowsArrayList;
 
+import java.io.PrintStream;
+
 public class SaveCommand implements Command {
 
-    private WindowsArrayList windows;
     private String fileName;
+    private transient PrintStream out;
+    private int UserID;
 
     /**
      * Command to save to file
-     * @param windows collection
      */
-    public SaveCommand(WindowsArrayList windows, String fileName){
-        this.windows = windows;
+    public SaveCommand(String fileName){
         this.fileName = fileName;
+        this.out = System.out;
     }
 
     @Override
-    public void execute(){
+    public void execute(WindowsArrayList windows){
+        windows.setOut(out);
         windows.save(fileName);
+    }
+
+    @Override
+    public void setUserID(int userID) {
+        UserID = userID;
+    }
+
+    @Override
+    public void setOut(PrintStream out) {
+        this.out = out;
     }
 }

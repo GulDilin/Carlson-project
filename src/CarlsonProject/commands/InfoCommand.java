@@ -2,19 +2,29 @@ package CarlsonProject.commands;
 
 import CarlsonProject.WindowsArrayList;
 
+import java.io.PrintStream;
+
 public class InfoCommand implements Command {
-    WindowsArrayList windows;
+    private transient PrintStream out;
+    private int UserID;
 
     /**
      * Comand to print info
-     * @param windows collection
+     *
      */
-    public InfoCommand(WindowsArrayList windows){
-        this.windows = windows;
+    @Override
+    public void execute(WindowsArrayList windows){
+        windows.setOut(out);
+        this.out.println(windows.getInfo());
     }
 
     @Override
-    public void execute(){
-        System.out.println(windows.getInfo());
+    public void setUserID(int userID) {
+        UserID = userID;
+    }
+
+    @Override
+    public void setOut(PrintStream out) {
+        this.out = out;
     }
 }

@@ -1,6 +1,8 @@
 package CarlsonProject.plot;
 
-public enum Color{
+import java.io.Serializable;
+
+public enum Color implements Serializable {
     GREEN(Effect.INFINITYJAM, "Зелено"),
     BLUE(Effect.DECENDUR, "Сине"),
     RED(Effect.ADDJAM, "Красно"),

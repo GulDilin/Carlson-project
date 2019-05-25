@@ -1,6 +1,8 @@
 package CarlsonProject.plot;
 
-public class Move implements Talkable {
+import java.io.Serializable;
+
+public class Move implements Talkable, Serializable {
     private static Window[] windows = {
             new Window.Builder(Color.RED).build(),
             new Window.Builder(Color.GREEN).build(),

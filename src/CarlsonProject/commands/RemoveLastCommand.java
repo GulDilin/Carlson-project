@@ -2,20 +2,33 @@ package CarlsonProject.commands;
 
 import CarlsonProject.WindowsArrayList;
 
+import java.io.PrintStream;
+
 public class RemoveLastCommand implements Command {
 
-    private WindowsArrayList windows;
+    private transient PrintStream out;
+    private int UserID;
 
     /**
      * Command to remove last elem from collection
-     * @param windows collection
      */
-    public RemoveLastCommand(WindowsArrayList windows){
-        this.windows = windows;
+    public RemoveLastCommand(){
+        this.out = System.out;
     }
 
     @Override
-    public void execute(){
+    public void execute(WindowsArrayList windows){
+        windows.setOut(out);
         windows.removeLast();
+    }
+
+    @Override
+    public void setUserID(int userID) {
+        UserID = userID;
+    }
+
+    @Override
+    public void setOut(PrintStream out) {
+        this.out = out;
     }
 }

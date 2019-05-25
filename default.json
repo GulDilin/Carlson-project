@@ -1,0 +1,11 @@
+[
+	{
+		"color":"GREEN", "speakChance":"0.6"
+	},
+	{
+		"color":"YELLOW", "speakChance":"0.6"
+	},
+	{
+		"color":"BLUE","speakChance":"0.6"
+	}
+]

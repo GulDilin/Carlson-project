@@ -2,28 +2,40 @@ package CarlsonProject.commands;
 
 import CarlsonProject.WindowsArrayList;
 
-public class ImportCommand implements  Command{
+import java.io.PrintStream;
 
-    private WindowsArrayList windows;
+public class ImportCommand implements  Command{
     private String fileName;
+    private transient PrintStream out;
+    private int UserID;
+
 
     /**
      * Command to import collection from file
-     * @param windows collection
      * @param fileName name of file
      */
-    public ImportCommand(WindowsArrayList windows, String fileName){
-        this.windows = windows;
+    public ImportCommand(String fileName){
         this.fileName = fileName;
 
     }
 
     @Override
-    public void execute(){
+    public void execute(WindowsArrayList windows){
+        windows.setOut(out);
         try{
             windows.importFromFile(fileName);
         } catch (NullPointerException e){
-            System.out.println("Get Null Obj");
+            out.println("Get Null Obj");
         }
+    }
+
+    @Override
+    public void setUserID(int userID) {
+        UserID = userID;
+    }
+
+    @Override
+    public void setOut(PrintStream out) {
+        this.out = out;
     }
 }

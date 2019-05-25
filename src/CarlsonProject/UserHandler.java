@@ -1,5 +1,6 @@
 package CarlsonProject;
 
+import java.io.Serializable;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Arrays;
@@ -17,7 +18,7 @@ import CarlsonProject.plot.Nurse;
  *
  */
 
-public class UserHandler {
+public class UserHandler implements Serializable {
 
     /**
      * convert string to JSON string
@@ -55,16 +56,15 @@ public class UserHandler {
      *
      * @param message string with user command
      * @param HELP String contains text with command names
-     * @param windows collection
      */
-    public static void getInput(String message, String HELP, WindowsArrayList windows, String defaultFileName) {
+    public static Command getInput(String message, String HELP, String defaultFileName) {
         Command command = null;
         boolean flag = true;
         final String[] SET_VALUES = new String[]{"save", "info", "sort", "add", "insert",
-                "import", "help", "show", "remove", "remove_last", "start", "exit"};
+                "import", "help", "show", "remove", "remove_last", "start", "exit", "check"};
         final Set<String> COMMAND_NAMES = new HashSet<>(Arrays.asList(SET_VALUES));
 
-        System.out.print(HELP);
+
         while (flag) {
             System.out.print(message);
             Scanner in = new Scanner(System.in);
@@ -85,9 +85,21 @@ public class UserHandler {
             switch (s[0]) {
                 case "remove":
                     try {
+<<<<<<< HEAD
+<<<<<<< HEAD
+                        command = new RemoveCommand( fromUserStringToJSONString(line));
+                    } catch (Exception e) {
+                        System.out.println("No element");
+=======
                         command = new RemoveCommand(windows, fromUserStringToJSONString(line));
                     } catch (NoElementException e) {
                         System.out.println(e.getMessage());
+>>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
+=======
+                        command = new RemoveCommand(windows, fromUserStringToJSONString(line));
+                    } catch (NoElementException e) {
+                        System.out.println(e.getMessage());
+>>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
                     }
                     break;
 
@@ -95,22 +107,22 @@ public class UserHandler {
                     Nurse nurse = new Nurse("Лучшая в мире");
                     NewBaby baby = new NewBaby("Мистер", 2);
                     NewCarlson carlson = new NewCarlson("В САМОМ РАСЦВЕТЕ СИЛ");
-                    command = new StartCommand(windows, nurse, carlson, baby);
+                    command = new StartCommand( nurse, carlson, baby);
                     break;
 
                 case "save":
                     if (line.equals("")) {
-                        command = new SaveCommand(windows, defaultFileName);
+                        command = new SaveCommand(defaultFileName);
                     } else {
-                        command = new SaveCommand(windows, line);
+                        command = new SaveCommand( line);
                     }
                     break;
 
                 case "import":
                     try {
-                        command = new ImportCommand(windows, line);
+                        command = new ImportCommand( line);
                     } catch (ArrayIndexOutOfBoundsException e1) {
-                        command = new ImportCommand(windows, defaultFileName);
+                        command = new ImportCommand(defaultFileName);
 
                     }
                     break;
@@ -120,45 +132,77 @@ public class UserHandler {
                     break;
 
                 case "remove_last":
-                    command = new RemoveLastCommand(windows);
+                    command = new RemoveLastCommand();
                     break;
 
                 case "sort":
-                    command = new SortCommand(windows);
+                    command = new SortCommand();
                     break;
 
                 case "info":
-                    command = new InfoCommand(windows);
+                    command = new InfoCommand();
                     break;
 
                 case "show":
-                    command = new ShowCommand(windows);
+                    command = new ShowCommand();
                     break;
 
                 case "insert":
                     try {
+<<<<<<< HEAD
+<<<<<<< HEAD
+                        command = new InsertCommand( fromUserStringToJSONString(line));
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        System.out.println("No element error");
+=======
                         command = new InsertCommand(windows, line);
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
+>>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
+=======
+                        command = new InsertCommand(windows, line);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+>>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
                     }
+                    break;
+
+                case "check":
+                    command = new ConnectCommand();
                     break;
 
                 case "add":
                     try {
+<<<<<<< HEAD
+<<<<<<< HEAD
+                        if ((line.replaceAll(" ","") == "")){
+                            System.out.println("No element error");
+                        }
+                        command = new AddCommand( fromUserStringToJSONString(line));
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        System.out.println("No element error");
+=======
                         command = new AddCommand(windows, fromUserStringToJSONString(line));
                     } catch (NoElementException e) {
                         System.out.println(e.getMessage());
+>>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
+=======
+                        command = new AddCommand(windows, fromUserStringToJSONString(line));
+                    } catch (NoElementException e) {
+                        System.out.println(e.getMessage());
+>>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
                     }
                     break;
 
                 case "exit":
                     flag = false;
-                    windows.save();
+                    command = new ExitCommand();
             }
 
             if (command != null) {
-                command.execute();
+                return command;
             }
         }
+        return null;
     }
 }
