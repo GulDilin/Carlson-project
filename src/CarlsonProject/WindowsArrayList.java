@@ -3,17 +3,8 @@ package CarlsonProject;
 import java.lang.reflect.Method;
 import java.util.*;
 import java.io.*;
-<<<<<<< HEAD
-<<<<<<< HEAD
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
-
-=======
-import java.util.concurrent.atomic.AtomicInteger;
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
-=======
-import java.util.concurrent.atomic.AtomicInteger;
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
 import CarlsonProject.plot.Color;
 import CarlsonProject.plot.NoSuchColorException;
 import CarlsonProject.plot.Window;
@@ -28,18 +19,9 @@ public class WindowsArrayList  implements Serializable{
      */
     private CopyOnWriteArrayList<Window> windows;
     private Date date;
-<<<<<<< HEAD
-<<<<<<< HEAD
     private PrintStream out;
     private String defaultFileName = "C:\\Users\\zheny\\Documents\\Progs\\Carlson-project\\src\\default.json";
     private static ConcurrentHashMap<String, Color> colorMap;
-=======
-=======
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
-    private String defaultFileName = "src/default.json";
-    //private String defaultFileName = System.getenv(FILENAME);
-    private static HashMap<String, Color> colorMap;
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
     static {
         colorMap = new ConcurrentHashMap<String, Color>();
         colorMap.put("green", Color.GREEN);
@@ -87,17 +69,6 @@ public class WindowsArrayList  implements Serializable{
      * @param window new elem
      */
     public void add(Window window){
-<<<<<<< HEAD
-<<<<<<< HEAD
-        if (window != null) {
-            if (this.windows.add(window)) {
-                this.out.println("Element was added");
-            }
-        } else {
-            this.out.println("Add error");
-=======
-=======
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
         if ((window != null)&(!windows.contains(window))&(this.windows.add(window))){
             System.out.println("Element was added");
         } else {
@@ -121,10 +92,6 @@ public class WindowsArrayList  implements Serializable{
 
         } else {
             System.out.println("Elem already exist");
-<<<<<<< HEAD
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
-=======
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
         }
     }
 
@@ -135,20 +102,6 @@ public class WindowsArrayList  implements Serializable{
         this.windows.sort((Window window, Window otherwindow) ->
                 window.compareTo(otherwindow));
     }
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-    public void add(int index, Window window){
-        if (window != null){
-            this.windows.add(index, window);
-        }
-    }
-=======
-
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
-=======
-
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
 
     public int size(){
         return windows.size();
@@ -170,16 +123,10 @@ public class WindowsArrayList  implements Serializable{
         }
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     /**
      *
      * @return Window array from collection
      */
-=======
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
-=======
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
     public Window[] toArray(){
         Window[] array = new Window[windows.size()];
         windows.forEach(window -> array[windows.indexOf(window)] = window);
@@ -202,15 +149,7 @@ public class WindowsArrayList  implements Serializable{
         try {
             object = (JSONObject) parcer.parse(s);
         } catch (ParseException parsE){
-<<<<<<< HEAD
             out.println("Ошибка получения объекта окна");
-=======
-            System.out.println("Ошибка получения объекта окна");
-            throw new NullPointerException();
-<<<<<<< HEAD
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
-=======
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
         }
         return object;
     }
@@ -248,15 +187,7 @@ public class WindowsArrayList  implements Serializable{
             }
             return windowBuilder.build();
         } catch (NoSuchColorException | NullPointerException colorE){
-<<<<<<< HEAD
-<<<<<<< HEAD
             out.println(colorE.getMessage());
-=======
-            //ignore
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
-=======
-            //ignore
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
         }
         return window;
     }
@@ -332,16 +263,8 @@ public class WindowsArrayList  implements Serializable{
         File file = new File(fileName);
         this.out.println("Try to import collection from file " + fileName);
         String content = "";
-<<<<<<< HEAD
-<<<<<<< HEAD
         try(FileReader reader = new FileReader(file);) {
 
-=======
-        try (FileReader reader = new FileReader(new File(fileName))){;
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
-=======
-        try (FileReader reader = new FileReader(new File(fileName))){;
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
             windows.removeAll(windows);
             char[] chars = new char[(int) file.length()];
 
@@ -352,23 +275,10 @@ public class WindowsArrayList  implements Serializable{
                 for(JSONObject object: fromStringToJSONObjects(content)){
                     add(fromJSONToWindow(object, out));
                 }
-<<<<<<< HEAD
                 this.out.println("Collection was imported from file " + fileName);
         } catch (IOException e) {
             e.printStackTrace();
-=======
-                System.out.println("Collection was imported from file " + fileName);
-            }
 
-            catch (IOException ex){
-                System.out.println(ex.getMessage());
-            }
-        }catch (NullPointerException | IOException e){
-                System.out.println("No such file!");
-<<<<<<< HEAD
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
-=======
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
         }
     }
 

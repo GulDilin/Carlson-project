@@ -85,21 +85,9 @@ public class UserHandler implements Serializable {
             switch (s[0]) {
                 case "remove":
                     try {
-<<<<<<< HEAD
-<<<<<<< HEAD
                         command = new RemoveCommand( fromUserStringToJSONString(line));
                     } catch (Exception e) {
                         System.out.println("No element");
-=======
-                        command = new RemoveCommand(windows, fromUserStringToJSONString(line));
-                    } catch (NoElementException e) {
-                        System.out.println(e.getMessage());
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
-=======
-                        command = new RemoveCommand(windows, fromUserStringToJSONString(line));
-                    } catch (NoElementException e) {
-                        System.out.println(e.getMessage());
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
                     }
                     break;
 
@@ -149,21 +137,10 @@ public class UserHandler implements Serializable {
 
                 case "insert":
                     try {
-<<<<<<< HEAD
-<<<<<<< HEAD
+
                         command = new InsertCommand( fromUserStringToJSONString(line));
                     } catch (ArrayIndexOutOfBoundsException e) {
                         System.out.println("No element error");
-=======
-                        command = new InsertCommand(windows, line);
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage());
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
-=======
-                        command = new InsertCommand(windows, line);
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage());
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
                     }
                     break;
 
@@ -173,24 +150,12 @@ public class UserHandler implements Serializable {
 
                 case "add":
                     try {
-<<<<<<< HEAD
-<<<<<<< HEAD
                         if ((line.replaceAll(" ","") == "")){
                             System.out.println("No element error");
                         }
                         command = new AddCommand( fromUserStringToJSONString(line));
                     } catch (ArrayIndexOutOfBoundsException e) {
                         System.out.println("No element error");
-=======
-                        command = new AddCommand(windows, fromUserStringToJSONString(line));
-                    } catch (NoElementException e) {
-                        System.out.println(e.getMessage());
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
-=======
-                        command = new AddCommand(windows, fromUserStringToJSONString(line));
-                    } catch (NoElementException e) {
-                        System.out.println(e.getMessage());
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
                     }
                     break;
 

@@ -20,26 +20,8 @@ public class AddCommand implements Command {
      * @param line string with window obj
      *
      */
-<<<<<<< HEAD
-<<<<<<< HEAD
     public AddCommand(String line){
         System.out.println(line);
-=======
-    public AddCommand(WindowsArrayList windows, String line) throws NoElementException {
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
-        this.line = line;
-        this.out = System.out;
-=======
-    public AddCommand(WindowsArrayList windows, String line) throws NoElementException {
-        this.line = line;
-        this.windows = windows;
-        if (this.line.equalsIgnoreCase("{}")){
-            throw new NoElementException("No element error");
-        }
-<<<<<<< HEAD
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
-=======
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
     }
 
     @Override

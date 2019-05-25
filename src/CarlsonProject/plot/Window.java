@@ -1,22 +1,11 @@
 package CarlsonProject.plot;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-import CarlsonProject.commands.Command;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class Window implements Serializable, Comparable {
-=======
-public class Window implements Comparable{
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
-=======
-public class Window implements Comparable{
->>>>>>> e9052eb61c13f1c19208975e52ea4f53602f6324
     private boolean openFlag;
     private boolean holeFlag;
     private boolean speakFlag;
@@ -156,10 +145,5 @@ public class Window implements Comparable{
                 "\", \"holeChance\": \"" + this.holeChance +
                 "\", \"robberChance\": \"" + this.robberChance +
                 "\", \"openChance\": \"" + this.openChance + "\"}";
-    }
-
-    @Override
-    public int compareTo(Object w){
-        return Double.compare(this.getChanceSum(), ((Window)w).getChanceSum());
     }
 }
