@@ -10,7 +10,7 @@ import java.util.Properties;
 public class EmailManager {
 
     final private static String user = "gouldilin@gmail.com";
-    final private static String password = "589q70w29e";
+    final private static String password = "pass";
 
     private static final String HOST="smtp.gmail.com";
     private static final String PORT="587"; //gmail port

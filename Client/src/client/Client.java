@@ -34,8 +34,8 @@ public class Client {
         this.serverAdress = InetAddress.getByName(serverAdress);
         this.port = port;
         this.tunnel = new Tunnel("helios.se.ifmo.ru",
-                "s264449",
-                "cfv571",
+                "user",
+                "password",
                 2222,
                 "localhost",
                 port,

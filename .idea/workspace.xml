@@ -7,188 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65ad4a39-5bfa-4fab-b7c8-1d79f4452ddb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/activation.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mail.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/smtp.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/GUI/AutorisationWindow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/client/TestClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/server/TCPResponseThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/server/TestServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Carlson_project_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Carlson_project_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Client_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Client_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Server_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Server_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/unnamed.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/062b13f2-41c4-4716-8b0c-ad39f5426bd8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/062b13f2-41c4-4716-8b0c-ad39f5426bd8.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/062b13f2-41c4-4716-8b0c-ad39f5426bd8/storage_v2/_src_/database/studs.ww2LBg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/062b13f2-41c4-4716-8b0c-ad39f5426bd8/storage_v2/_src_/database/studs.ww2LBg.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/062b13f2-41c4-4716-8b0c-ad39f5426bd8/storage_v2/_src_/database/studs.ww2LBg/schema/s264449.fE_QGw.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/062b13f2-41c4-4716-8b0c-ad39f5426bd8/storage_v2/_src_/database/studs.ww2LBg/schema/s264449.fE_QGw.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/CarlsonLib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/CarlsonLib.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Carlson_project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Carlson_project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jsch_0_1_55.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/jsch_0_1_55.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/json_simple_1_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/json_simple_1_1_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/postgresql_42_2_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carlson-project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Carlson-project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Carlson-project.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Carlson-project.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/Client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Client/Client.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/GUI/JFrameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/GUI/JFrameTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/client/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/client/EmailManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/client/EmailManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/client/Tunnel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/client/Tunnel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/Server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Server/Server.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/server/ConnectBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/server/ConnectBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/server/ConnectBuilder.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/server/DataBaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/server/DataBaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/server/LoadFromDb.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/server/LoadFromDb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/server/ResponseThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/server/ResponseThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/.idea/libraries/CarlsonLib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/.idea/libraries/CarlsonLib.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/.idea/libraries/Carlson_project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/.idea/libraries/Carlson_project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/CarlsonProject/Baby$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/CarlsonProject/Baby$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/CarlsonProject/Baby.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/CarlsonProject/Baby.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/CarlsonProject/Carlson$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/CarlsonProject/Carlson$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/CarlsonProject/Carlson.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/CarlsonProject/Carlson.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/CarlsonProject/Color.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/CarlsonProject/Color.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/CarlsonProject/Effect.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/CarlsonProject/Effect.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/CarlsonProject/Effects$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/CarlsonProject/Effects$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/CarlsonProject/Effects.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/CarlsonProject/Effects.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/CarlsonProject/EnduranceChanger.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/CarlsonProject/EnduranceChanger.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/CarlsonProject/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/CarlsonProject/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/CarlsonProject/Move.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/CarlsonProject/Move.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/CarlsonProject/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/CarlsonProject/Person.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/CarlsonProject/Talkable.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/CarlsonProject/Talkable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/CarlsonProject/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/CarlsonProject/Window.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/default.json" beforeDir="false" afterPath="$PROJECT_DIR$/default.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kfd" beforeDir="false" afterPath="$PROJECT_DIR$/kfd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/CarlsonLib.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/CarlsonLib.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/jsch-0.1.55.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/jsch-0.1.55.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/json-simple-1.1.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/json-simple-1.1.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/postgresql-42.2.5.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/postgresql-42.2.5.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manifest.mf" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.mf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/out/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/264449@helios.se.ifmo.ru" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/264449@helios.se.ifmo.ru" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Carlson_project_jar/Carlson-project.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Carlson_project_jar/Carlson-project.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Client_jar/Client.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Client_jar/Client.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Server_jar/Server.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Server_jar/Server.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/s264449@helios.se.ifmo.ru" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/s264449@helios.se.ifmo.ru" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/UserHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/UserHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/WindowsArrayList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/WindowsArrayList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/AddCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/AddCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/Command.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/ConnectCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/ConnectCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/ExitCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/ExitCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/HelpCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/HelpCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/ImportCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/ImportCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/InfoCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/InfoCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/InsertCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/InsertCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/NoElementException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/NoElementException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/RegisterCommand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/RemoveCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/RemoveCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/RemoveLastCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/RemoveLastCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/SaveCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/SaveCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/ShowCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/ShowCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/SortCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/SortCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/StartCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/commands/StartCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Baby$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Baby$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Baby.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Baby.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Calculateable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Calculateable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Carlson$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Carlson$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Carlson.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Carlson.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/CarlsonAndBabyStatusNotMatch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/CarlsonAndBabyStatusNotMatch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Color.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Color.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Describeable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Describeable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Effect.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Effect.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/EnduranceChanger.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/EnduranceChanger.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Move.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Move.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/NewBaby.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/NewBaby.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/NewCarlson.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/NewCarlson.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/NewMove$1RobberMove$Robber.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/NewMove$1RobberMove$Robber.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/NewMove$1RobberMove.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/NewMove$1RobberMove.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/NewMove.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/NewMove.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/NoRobersException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/NoRobersException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/NoSuchColorException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/NoSuchColorException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Nurse.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Nurse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/NurseDoesntHide.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/NurseDoesntHide.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Person.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Talkable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Talkable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Window$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Window$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Window$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Window$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/CarlsonProject/plot/Window.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/META-INF/Carlson-project.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/META-INF/Carlson-project.kotlin_module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/default.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/default.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/f.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/f.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Carlson-project/file.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Carlson-project/file.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Client/GUI/JFrameTest$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/GUI/JFrameTest$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Client/GUI/JFrameTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/GUI/JFrameTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Client/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Client/client/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/client/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Client/client/EmailManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/client/EmailManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Client/client/Tunnel$localUserInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/client/Tunnel$localUserInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Client/client/Tunnel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/client/Tunnel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Server/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Server/server/ConnectBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/server/ConnectBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Server/server/DataBaseManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/server/DataBaseManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Server/server/LoadFromDb.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/server/LoadFromDb.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Server/server/ResponseThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/server/ResponseThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Server/server/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/server/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/hosts" beforeDir="false" afterPath="$PROJECT_DIR$/res/hosts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/UserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/UserHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/WindowsArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/WindowsArrayList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/commands/AddCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/commands/AddCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/commands/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/commands/ConnectCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/commands/ConnectCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/commands/ExitCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/commands/ExitCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/commands/HelpCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/commands/HelpCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/commands/ImportCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/commands/ImportCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/commands/InfoCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/commands/InfoCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/commands/InsertCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/commands/InsertCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/commands/NoElementException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/commands/NoElementException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/commands/RegisterCommand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/commands/RemoveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/commands/RemoveCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/commands/RemoveLastCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/commands/RemoveLastCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/commands/SaveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/commands/SaveCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/commands/ShowCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/commands/ShowCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/commands/SortCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/commands/SortCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/commands/StartCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/commands/StartCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/plot/Baby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/plot/Baby.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/plot/Carlson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/plot/Carlson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/plot/CarlsonAndBabyStatusNotMatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/plot/CarlsonAndBabyStatusNotMatch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/plot/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/plot/Color.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/plot/Describeable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/plot/Describeable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/plot/Effect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/plot/Effect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/plot/EnduranceChanger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/plot/EnduranceChanger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/plot/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/plot/Move.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/plot/NewBaby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/plot/NewBaby.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/plot/NewCarlson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/plot/NewCarlson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/plot/NewMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/plot/NewMove.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/plot/NoRobersException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/plot/NoRobersException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/plot/NoSuchColorException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/plot/NoSuchColorException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/plot/Nurse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/plot/Nurse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/plot/NurseDoesntHide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/plot/NurseDoesntHide.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/plot/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/plot/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/plot/Talkable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/plot/Talkable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CarlsonProject/plot/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CarlsonProject/plot/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/default.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/default.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/f.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/f.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/file.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/file.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -221,10 +43,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Server/src/server/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
+            <state relative-caret-position="561">
               <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -234,22 +56,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CarlsonProject/WindowsArrayList.java">
+        <entry file="file://$PROJECT_DIR$/Server/src/server/TCPResponseThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2227">
-              <caret line="150" column="33" selection-start-line="150" selection-start-column="33" selection-end-line="150" selection-end-column="33" />
+            <state relative-caret-position="-14">
+              <caret line="25" column="47" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3375#3376#0" expanded="true" />
-                <element signature="e#3412#3413#0" expanded="true" />
-                <element signature="e#3444#3445#0" expanded="true" />
-                <element signature="e#3543#3544#0" expanded="true" />
-                <element signature="e#4127#4128#0" expanded="true" />
-                <element signature="e#4210#4211#0" expanded="true" />
-                <element signature="e#7138#7139#0" expanded="true" />
-                <element signature="e#7199#7200#0" expanded="true" />
-                <element signature="e#8295#8296#0" expanded="true" />
-                <element signature="e#8337#8338#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -258,8 +70,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/src/server/DataBaseManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1734">
-              <caret line="118" column="24" selection-start-line="118" selection-start-column="24" selection-end-line="118" selection-end-column="24" />
+            <state relative-caret-position="209">
+              <caret line="45" column="21" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -268,57 +80,36 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CarlsonProject/commands/AddCommand.java">
+        <entry file="file://$PROJECT_DIR$/Client/src/client/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="850">
-              <caret line="60" column="23" selection-start-line="60" selection-start-column="23" selection-end-line="60" selection-end-column="23" />
+            <state relative-caret-position="226">
+              <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
               <folding>
-                <element signature="e#1463#1464#0" expanded="true" />
-                <element signature="e#1499#1500#0" expanded="true" />
-                <element signature="e#1556#1557#0" expanded="true" />
-                <element signature="e#1586#1587#0" expanded="true" />
-                <element signature="e#1805#1806#0" expanded="true" />
-                <element signature="e#1836#1837#0" expanded="true" />
-                <element signature="e#1880#1881#0" expanded="true" />
-                <element signature="e#1909#1910#0" expanded="true" />
-                <element signature="e#1994#1995#0" expanded="true" />
-                <element signature="e#2048#2049#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CarlsonProject/commands/InsertCommand.java">
+        <entry file="file://$PROJECT_DIR$/Client/src/client/Tunnel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="54" column="5" selection-start-line="40" selection-start-column="4" selection-end-line="54" selection-end-column="5" />
+            <state relative-caret-position="624">
+              <caret line="109" column="12" selection-start-line="109" selection-start-column="12" selection-end-line="115" selection-end-column="26" />
               <folding>
-                <element signature="e#1594#1595#0" expanded="true" />
-                <element signature="e#1633#1634#0" expanded="true" />
-                <element signature="e#1698#1699#0" expanded="true" />
-                <element signature="e#1736#1737#0" expanded="true" />
-                <element signature="e#1980#1981#0" expanded="true" />
-                <element signature="e#2019#2020#0" expanded="true" />
-                <element signature="e#2072#2073#0" expanded="true" />
-                <element signature="e#2109#2110#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CarlsonProject/commands/RemoveCommand.java">
+        <entry file="file://$PROJECT_DIR$/Client/src/client/EmailManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
-              <caret line="76" column="5" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
+            <state relative-caret-position="165">
+              <caret line="12" column="48" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
               <folding>
-                <element signature="e#1557#1558#0" expanded="true" />
-                <element signature="e#1588#1589#0" expanded="true" />
-                <element signature="e#1935#1936#0" expanded="true" />
-                <element signature="e#1966#1967#0" expanded="true" />
-                <element signature="e#2010#2011#0" expanded="true" />
-                <element signature="e#2039#2040#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -355,7 +146,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client/src/GUI/AutorisationWindow.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
@@ -392,6 +183,7 @@
       <find>add</find>
       <find>out</find>
       <find>getMD</find>
+      <find>264449</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -424,7 +216,6 @@
         <option value="$PROJECT_DIR$/src/CarlsonProject/plot/Color.java" />
         <option value="$PROJECT_DIR$/src/CarlsonProject/UserHandler.java" />
         <option value="$PROJECT_DIR$/Client/src/GUI/JFrameTest.java" />
-        <option value="$PROJECT_DIR$/Server/src/server/ConnectBuilder.java" />
         <option value="$PROJECT_DIR$/Server/src/server/LoadFromDb.java" />
         <option value="062b13f2-41c4-4716-8b0c-ad39f5426bd8/database/studs/schema/s264449/table/users.sql" />
         <option value="$PROJECT_DIR$/Client/src/client/PortForwardingL.java" />
@@ -436,7 +227,6 @@
         <option value="$PROJECT_DIR$/Client/src/client/TestClient.java" />
         <option value="$PROJECT_DIR$/src/CarlsonProject/WindowsArrayList.java" />
         <option value="$PROJECT_DIR$/Client/src/client/TCPClient.java" />
-        <option value="$PROJECT_DIR$/Client/src/client/EmailManager.java" />
         <option value="$PROJECT_DIR$/src/CarlsonProject/commands/RegisterCommand.java" />
         <option value="$PROJECT_DIR$/src/CarlsonProject/commands/ConnectCommand.java" />
         <option value="$PROJECT_DIR$/src/CarlsonProject/commands/ExitCommand.java" />
@@ -454,9 +244,11 @@
         <option value="$PROJECT_DIR$/src/CarlsonProject/commands/Command.java" />
         <option value="$PROJECT_DIR$/src/CarlsonProject/commands/InsertCommand.java" />
         <option value="$PROJECT_DIR$/src/CarlsonProject/commands/AddCommand.java" />
-        <option value="$PROJECT_DIR$/Server/src/server/DataBaseManager.java" />
         <option value="$PROJECT_DIR$/src/CarlsonProject/commands/RemoveCommand.java" />
+        <option value="$PROJECT_DIR$/Server/src/server/DataBaseManager.java" />
         <option value="$PROJECT_DIR$/Client/src/client/Client.java" />
+        <option value="$PROJECT_DIR$/Client/src/client/EmailManager.java" />
+        <option value="$PROJECT_DIR$/Server/src/server/ConnectBuilder.java" />
       </list>
     </option>
   </component>
@@ -753,11 +545,12 @@
       <workItem from="1559547735457" duration="23871000" />
       <workItem from="1559825049145" duration="639000" />
       <workItem from="1560261687294" duration="623000" />
+      <workItem from="1560351568183" duration="734000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="223506000" />
+    <option name="totallyTimeSpent" value="224240000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -770,13 +563,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Designer" order="0" />
       <window_info id="UI Designer" order="1" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" sideWeight="0.49858356" visible="true" weight="0.15637584" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" sideWeight="0.49858356" visible="true" weight="0.15838926" />
       <window_info id="Structure" order="6" sideWeight="0.50141644" side_tool="true" weight="0.11543624" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="1" />
@@ -877,16 +671,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/client/Tunnel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="109" column="12" selection-start-line="109" selection-start-column="12" selection-end-line="115" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Client/src/client/PortForwardingL.java" />
     <entry file="file://$PROJECT_DIR$/Client/src/client/TCPClient.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/lang/String.java">
@@ -914,18 +698,6 @@
       </provider>
     </entry>
     <entry file="das://062b13f2-41c4-4716-8b0c-ad39f5426bd8/database/studs/schema/s264449/table/users" />
-    <entry file="file://$PROJECT_DIR$/Client/src/client/EmailManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="52" column="23" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#889#1119#0" expanded="true" />
-            <element signature="e#1118#1119#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Client/src/client/TestClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
@@ -1054,16 +826,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/server/TCPResponseThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="25" column="47" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="das://062b13f2-41c4-4716-8b0c-ad39f5426bd8/database/studs/schema/s264449/table/collection" />
     <entry file="file://$PROJECT_DIR$/src/CarlsonProject/plot/Window.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1074,23 +836,6 @@
             <element signature="e#2303#2304#0" expanded="true" />
             <element signature="e#2346#2347#0" expanded="true" />
             <element signature="e#2384#2385#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/client/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/server/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1111,16 +856,6 @@
             <element signature="e#7199#7200#0" expanded="true" />
             <element signature="e#8295#8296#0" expanded="true" />
             <element signature="e#8337#8338#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/server/DataBaseManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1734">
-          <caret line="118" column="24" selection-start-line="118" selection-start-column="24" selection-end-line="118" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1205,6 +940,73 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/client/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/client/Tunnel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="109" column="12" selection-start-line="109" selection-start-column="12" selection-end-line="115" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/server/ConnectBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/client/EmailManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="12" column="48" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/server/TCPResponseThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-14">
+          <caret line="25" column="47" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/server/DataBaseManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="45" column="21" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/server/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

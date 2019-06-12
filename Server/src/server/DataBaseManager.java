@@ -20,8 +20,8 @@ import static java.lang.System.out;
 
 
 public class DataBaseManager {
-    private String user = "s264449";
-    private String password = "cfv571";
+    private String user = "user";
+    private String password = "password";
     private String host = "helios.se.ifmo.ru";
     private String rhost = "pg";
     private Connection connection;
