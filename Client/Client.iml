@@ -10,5 +10,9 @@
     <orderEntry type="module" module-name="Carlson-project" />
     <orderEntry type="module" module-name="Server" />
     <orderEntry type="library" name="jsch-0.1.55" level="project" />
+    <orderEntry type="library" name="postgresql-42.2.5" level="application" />
+    <orderEntry type="library" name="mail" level="project" />
+    <orderEntry type="library" name="smtp" level="project" />
+    <orderEntry type="library" name="activation" level="project" />
   </component>
 </module>

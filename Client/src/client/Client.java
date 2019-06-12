@@ -1,46 +1,47 @@
 package client;
 
 import java.io.*;
-import java.net.DatagramPacket;
+import java.net.*;
 
 import CarlsonProject.UserHandler;
 import CarlsonProject.commands.Command;
-import CarlsonProject.commands.ConnectCommand;
 import server.DataBaseManager;
 
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.SocketTimeoutException;
+import javax.mail.internet.AddressException;
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Scanner;
 
 import static java.lang.System.exit;
+import static server.DataBaseManager.getMD5;
 
 public class Client {
-    private DatagramSocket udpSocket;
+    private Socket socket;
     private InetAddress serverAdress;
     private int port;
-    private String defaultFilename;
     private boolean isWorking;
+    private int userId;
+    private String defaultFilename;
     private HashSet<String> user_logins = new HashSet<>();
     private DataBaseManager dataBaseManager;
     private Tunnel tunnel;
+    private String login = "";
+    private String password = "";
 
     public Client(String serverAdress, int port) throws IOException, SQLException {
         isWorking = true;
-//        dataBaseManager = new DataBaseManager();
+        dataBaseManager = new DataBaseManager("studs", 7878, true);
         this.serverAdress = InetAddress.getByName(serverAdress);
         this.port = port;
-        tunnel = new Tunnel("helios.se.ifmo.ru",
+        this.tunnel = new Tunnel("helios.se.ifmo.ru",
                 "s264449",
                 "cfv571",
                 2222,
                 "localhost",
                 port,
                 port);
-//        tunnel.connect();
-        udpSocket = new DatagramSocket();
+        this.tunnel.connect();
+        socket = new Socket("localhost", port);
 
     }
 
@@ -59,108 +60,36 @@ public class Client {
             "\thelp:                   |вывод списка доступных команд.\n" +
             "\tcheck:                  |проверка подключения\n";
 
+    private void work() throws IOException {
+        try (OutputStream os = socket.getOutputStream();
+             ObjectOutputStream oos = new ObjectOutputStream(os);
 
-    public void testServerConnection() throws IOException {
-        System.out.print("Try to connect server ");
-        DatagramPacket check = createDPacket(new ConnectCommand());
+             InputStream is = socket.getInputStream();
+             ObjectInputStream ois = new ObjectInputStream(is)) {
 
-        byte[] buf = new byte[1024];
-        DatagramPacket testResponse = new DatagramPacket(buf, buf.length);
+            System.out.println("Ready");
+            String response;
 
-        boolean connected = false;
-        udpSocket.setSoTimeout(1428);
-        String connectString = "";
-        for (int i = 0; i < 7; i++) {
-            udpSocket.send(check);
-            try {
-                udpSocket.receive(testResponse);
-            } catch (SocketTimeoutException e) {
-                System.out.print('.');
-                continue;
-            }
-            connectString = getServerOutput(check);
-
-            if (connectString.equals("Connected")) {
-                connected = true;
-                break;
-            }
-        }
-
-        if (connected) {
-            System.out.println("Conection complete");
-        } else {
-            System.err.println("Can't connect server");
-            exit(1);
-        }
-    }
-
-
-    private String getServerOutput(DatagramPacket senderDPacket) throws IOException {
-        String response = "";
-        if (senderDPacket != null) {
-            udpSocket.send(senderDPacket);
-
-            byte[] respBuf = new byte[4096];
-            DatagramPacket responsePacket = new DatagramPacket(respBuf, respBuf.length);
-            try {
-                this.udpSocket.receive(responsePacket);
-
-                try (ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(respBuf))) {
+            while (isWorking) {
+                Command command = UserHandler.getInput("Type command (help): ", HELP, defaultFilename);
+                command.setUserID(userId);
+                command.setUserHash(login, password);
+                oos.writeObject(command);
+                try {
                     response = (String) ois.readObject();
-                } catch (IOException | ClassNotFoundException e) {
+                    System.out.println(response);
+                    isWorking = response.contains("Exit") ? false : true;
+                } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
-            } catch (SocketTimeoutException e) {
-                System.err.println("Timeout end");
-                System.err.println("Lost connection");
-                testServerConnection();
+
             }
+            System.out.println("End connection");
         }
-        return response;
-    }
-
-    private DatagramPacket createDPacket(Command command) throws IOException {
-        byte[] sending;
-        try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-             ObjectOutputStream oos = new ObjectOutputStream(outputStream)) {
-
-            oos.writeObject(command);
-            oos.flush();
-            sending = outputStream.toByteArray();
-
-        } catch (NotSerializableException e) {
-            throw new NotSerializableException("Datagram Serializable Creating Error");
-        }
-        return new DatagramPacket(sending, sending.length, serverAdress, port);
-    }
-
-    private void doCommand(Command command) throws IOException {
-        DatagramPacket senderDPacket;
-        senderDPacket = createDPacket(command);
-        String response = getServerOutput(senderDPacket);
-        System.out.println(response);
-        isWorking = response.contains("Exit") ? false : true;
-    }
-
-
-    private void doCommand() throws IOException {
-        Command command = UserHandler.getInput("Type command (help): ", HELP, defaultFilename);
-        doCommand(command);
-    }
-
-    private void work() throws IOException {
-        System.out.println("Ready");
-        while (isWorking) {
-            doCommand();
-        }
-        System.out.println("End connection");
     }
 
     private void logIn() {
         boolean isLogin = false;
-        String login;
-        String password;
-
         System.out.print("Please autorizate in________" +
                 "\n\tRegister | new user" +
                 "\n\tSing In" +
@@ -169,63 +98,81 @@ public class Client {
         String s = in.nextLine().toLowerCase();
         System.out.println(s);
         while (!isLogin) {
+
             while (!(s.equals("register")) && (!s.equals("sing in"))) {
-                System.out.println("No such command");
+                if (!s.equals(" "))
+                    System.out.println("No such command");
                 System.out.println("Type command: ");
                 s = in.nextLine().trim();
             }
             switch (s) {
                 case "register":
+                    s = " ";
                     System.out.println("\tType Login : ");
-                    login = in.nextLine().trim();
+                    login = in.nextLine().toLowerCase().trim();
 
                     System.out.println("\tType EMAIL : ");
                     String email = in.nextLine().trim();
-                    password = DataBaseManager.getRandomPassword(8);
+                    password = DataBaseManager.getRandomPassword(4);
+                    System.out.println("Your password: " + password);
+                    try{
+                        EmailManager.sendEmail(email, "Registration", EmailManager.getPassMessage(login, password));
+                    } catch (AddressException e){
+                        System.err.println("Unable to send mail. Wrong address");
+                    }
                     if (dataBaseManager.registerUser(login, email, password)) {
                         System.out.println("Successful registration");
                         System.out.println("Your password: " + password);
                         isLogin = true;
+                        userId = dataBaseManager.getUserID(login);
                     } else {
                         System.out.println("Registration failed. User already exist");
                     }
                     break;
 
                 case "sing in":
+                    s = " ";
                     System.out.print("\tType login: ");
                     login = in.nextLine().trim();
-                    if (!dataBaseManager.getUserLogins().contains(login)){
-                        System.out.print("Wrong login");
+                    if (!dataBaseManager.getUserLogins().contains(login)) {
+                        System.out.print("Wrong login\n");
                         break;
                     }
                     System.out.print("\tType password : ");
                     password = in.nextLine().trim();
-                    if (dataBaseManager.checkPass(login, password)){
+                    if (dataBaseManager.checkPass(login, password)) {
                         System.out.println("Sing In success");
                         isLogin = true;
+                        userId = dataBaseManager.getUserID(login);
                     } else {
                         System.out.println("Wrong password");
                     }
                     break;
-
             }
         }
     }
 
     public static void main(String[] args) {
         if (args.length > 0) {
+            System.out.print("Try to connect server");
             try {
+                System.out.println();
                 Client sender = new Client("localhost", Integer.valueOf(args[0]));
                 System.out.println("Hello there");
-//                sender.logIn();
-                sender.testServerConnection();
+                System.out.println("Server connected");
+                sender.logIn();
                 sender.work();
-            }catch (SQLException ex){
+            } catch (SQLException ex) {
                 ex.printStackTrace();
-                exit(-1);
+                exit(1);
+            } catch (IOException ioe) {
+                System.err.println("Server is unavaliable");
+                    ioe.printStackTrace();
+                exit(1);
             } catch (Exception e) {
                 System.err.println("Error. Lost connection");
-                e.printStackTrace();
+//                e.printStackTrace();
+                exit(1);
             }
         } else System.out.println("Write correct port number");
     }

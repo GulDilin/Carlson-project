@@ -15,6 +15,7 @@ public class Window implements Serializable, Comparable {
     private final double openChance;
     private final double holeChance;
     private final Color color;
+    private int ownerID;
 
     public static class Builder{
         private final Color color;
@@ -63,6 +64,7 @@ public class Window implements Serializable, Comparable {
         this.openFlag = Math.random() < openChance;
         this.holeFlag =  Math.random() > holeChance;
         this.speakFlag = Math.random() < speakChance;
+        this.ownerID = -1;
     }
 
     public boolean isOpenFlag() {
@@ -79,6 +81,14 @@ public class Window implements Serializable, Comparable {
 
     public boolean isRobberFlag(){
         return this.robberFlag;
+    }
+
+    public int getOwnerID() {
+        return ownerID;
+    }
+
+    public void setOwnerID(int ownerID) {
+        this.ownerID = ownerID;
     }
 
     public Color getColor() {

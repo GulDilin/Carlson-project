@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="Carlson-project:jar">
+  <artifact type="jar" build-on-make="true" name="Carlson-project:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/Carlson_project_jar</output-path>
     <root id="archive" name="Carlson-project.jar">
       <element id="directory" name="META-INF">

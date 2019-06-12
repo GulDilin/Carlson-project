@@ -7,10 +7,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="Carlson-project" exported="" />
-    <orderEntry type="library" name="postgresql-42.2.5" level="project" />
-    <orderEntry type="library" name="jsch-0.1.55" level="project" />
-    <orderEntry type="library" name="json-simple-1.1.1" level="application" />
+    <orderEntry type="module" module-name="Carlson-project" />
+    <orderEntry type="library" exported="" name="jsch-0.1.55" level="project" />
+    <orderEntry type="library" exported="" name="json-simple-1.1.1" level="application" />
     <orderEntry type="module" module-name="Client" />
+    <orderEntry type="library" name="postgresql-42.2.5" level="application" />
   </component>
 </module>

@@ -1,6 +1,9 @@
 package CarlsonProject.commands;
 
 import CarlsonProject.WindowsArrayList;
+import CarlsonProject.plot.Window;
+import org.json.simple.JSONObject;
+import server.DataBaseManager;
 
 import java.io.PrintStream;
 
@@ -13,36 +16,69 @@ public class AddCommand implements Command {
      */
     private String line;
     private transient PrintStream out;
-    private int UserID;
+    private int userID;
+    private String userHash;
+    private DataBaseManager dataBaseManager;
 
     /**
-     *
      * @param line string with window obj
-     *
      */
-    public AddCommand(String line){
-        System.out.println(line);
+    public AddCommand(String line) {
+        this.out = System.out;
+        this.line = line;
+    }
+
+    public AddCommand(String line, int userID) {
+        this.out = System.out;
+        this.line = line;
+        this.userID = userID;
     }
 
     @Override
-    public void execute(WindowsArrayList windows){
+    public void execute(WindowsArrayList windows) {
         windows.setOut(out);
-        try{
-            if (fromJSONToWindow(fromStringToJSONObject(line)) != null) {
-                windows.add(fromJSONToWindow(fromStringToJSONObject(line)));
+        try {
+            JSONObject object = fromStringToJSONObject(line, out);
+            Window window = fromJSONToWindow(object, out);
+            if (window != null) {
+                if ((dataBaseManager != null) && (dataBaseManager.addWindow(window, userID)))
+
+                    windows.add(window);
             }
-        } catch (NullPointerException e){
-            out.println("Get Null Obj");
+        }catch (NullPointerException ex){
+            out.println("Get Null Object");
+            ex.printStackTrace();
         }
     }
 
     @Override
     public void setUserID(int userID) {
-        UserID = userID;
+        this.userID = userID;
     }
 
     @Override
     public void setOut(PrintStream out) {
         this.out = out;
     }
+
+    @Override
+    public void setUserHash(String user, String password) {
+        this.userHash = DataBaseManager.getMD5(user) + DataBaseManager.getMD5(password);
+    }
+
+    @Override
+    public String getUserHash() {
+        return userHash;
+    }
+
+    @Override
+    public int getUserId() {
+        return userID;
+    }
+
+    @Override
+    public void setDataBaseManager(DataBaseManager dataBaseManager) {
+        this.dataBaseManager = dataBaseManager;
+    }
 }
+

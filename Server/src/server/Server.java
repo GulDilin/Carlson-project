@@ -4,36 +4,43 @@ import CarlsonProject.plot.Window;
 
 import java.io.IOException;
 import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.nio.channels.DatagramChannel;
-import java.nio.ByteBuffer;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.sql.SQLException;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import static java.lang.System.exit;
+
 public class Server {
-    private DatagramChannel channel;
-    private InetAddress host;
-    private DataBaseManager dataBaseManager;
+    private InetAddress         host;
+    private Socket              tcpSocket;
+    private DataBaseManager     dataBaseManager;
+    private ServerSocket        serverSocket;
     private WindowsArrayList windows = new WindowsArrayList(new CopyOnWriteArrayList<Window>());
 
-    public Server(int port) throws IOException, SQLException {
-        this.host = InetAddress.getLocalHost();
-        this.channel = DatagramChannel.open().bind(new InetSocketAddress(host, port));
+    private Server(String hostName, int port)throws IOException {
+        this.host = InetAddress.getByName(hostName);
+        this.serverSocket = new ServerSocket(port);
         System.out.println("Server started");
         System.out.println("IP: " + host);
         System.out.println("port: " + port);
-        //this.windows.importFromFile("default.json");
-        dataBaseManager = new DataBaseManager();
-        windows = dataBaseManager.getWindows();
+        try {
+            this.dataBaseManager = new DataBaseManager("studs", 8690, true);
+            this.windows = this.dataBaseManager.getWindows();
+        } catch (SQLException e){
+            System.out.println("Database connection error");
+            exit(1);
+        }
+    }
+    private Server(int port) throws IOException, SQLException {
+        this("localhost", port);
     }
 
     private void listen() throws IOException {
         while (true) {
-            ByteBuffer buffer = ByteBuffer.allocate(4096);
-            buffer.clear();
-            InetSocketAddress clientAddress = (InetSocketAddress) channel.receive(buffer);
+            tcpSocket = serverSocket.accept();
 
-            ResponseThread responseThread = new ResponseThread(channel, clientAddress, buffer, windows);
+            TCPResponseThread responseThread = new TCPResponseThread(tcpSocket, windows, dataBaseManager);
             responseThread.start();
         }
     }
@@ -47,7 +54,7 @@ public class Server {
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (SQLException ex) {
-                System.out.println("Can't connect database");
+                System.err.println("Can't connect database");
                 ex.printStackTrace();
             }
         }else System.out.println("Need to write port");
