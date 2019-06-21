@@ -1,5 +1,6 @@
 package CarlsonProject.commands;
 
+import CarlsonProject.UserHandler;
 import CarlsonProject.WindowsArrayList;
 import server.DataBaseManager;
 
@@ -26,9 +27,13 @@ public class RemoveLastCommand implements Command {
 
     @Override
     public void execute(WindowsArrayList windows){
-        windows.setOut(out);
-        windows.removeLast();
-    }
+//        System.out.println("Remove Last Cmnd");
+            if ((dataBaseManager != null) && (dataBaseManager.removeLastWindow(UserID, userHash))) {
+                windows.removeLast();
+                System.out.println("try to remove last");
+            }
+        }
+
 
     @Override
     public void setUserID(int userID) {

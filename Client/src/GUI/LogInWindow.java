@@ -65,6 +65,17 @@ public class LogInWindow extends JFrame {
         passwordLabel.setText(labelsBundle.getString("pass"));
         portLabel.setText(messageBundle.getString("insert_port"));
         isTunnelCheckBox.setText(labelsBundle.getString("tunnel"));
+        revalidate();
+        repaint();
+    }
+
+    public void updatePT(){
+        labelsBundle    = ResourceBundle.getBundle("Labels", currLocale);
+        messageBundle    = ResourceBundle.getBundle("Messages", currLocale);
+        errorsBundle    = ResourceBundle.getBundle("Errors", currLocale);
+        portLabel.setText(messageBundle.getString("insert_port"));
+        btnPExit.setText(labelsBundle.getString("exit"));
+
     }
 
 
@@ -109,23 +120,31 @@ public class LogInWindow extends JFrame {
 
         SloginLabel.setFont(new Font("Impact", Font.PLAIN, 18));
         passwordLabel.setFont(new Font("Impact", Font.PLAIN, 18));
+
         updateText();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        ActionListener langSwitch = e -> {
-            switch (SlangComboBox.getSelectedIndex()){
-                case 0:
-                    currLocale = ruLocale;
-                    break;
-                case 1:
-                    currLocale = Locale.ENGLISH;
-                    break;
-            }
-            updateText();
-        };
-        SlangComboBox.addActionListener(langSwitch);
-        PlangComboBox.addActionListener(langSwitch);
+        //-----------------------------------------------
+        //Add actions to lang switch buttons
+        for (JComboBox box: new JComboBox[]{SlangComboBox, PlangComboBox }) {
+            ActionListener langSwitch = e -> {
+                switch (box.getSelectedIndex()) {
+                    case 0:
+                        currLocale = ruLocale;
+                        break;
+                    case 1:
+                        currLocale = Locale.ENGLISH;
+                        break;
+                }
+                PlangComboBox.setSelectedIndex(box.getSelectedIndex());
+                SlangComboBox.setSelectedIndex(box.getSelectedIndex());
+                updateText();
+            };
+            box.addActionListener(langSwitch);
+        }
 
+        //-----------------------------------------------
+        //Add actions to OK button on Reg Panel
         btnROK.addActionListener((e) ->
             {
                 this.password   = DataBaseManager.getRandomPassword(4);
@@ -145,12 +164,13 @@ public class LogInWindow extends JFrame {
                 }
             });
 
+        //-----------------------------------------------
+        //Add actions to OK button on Sing Panel
         ActionListener SOKListener = (e)->
         {
             this.login       = loginSingField.getText();
             this.password    = passwordField.getText();
             if(client.singIn(login, password)){
-//                    JOptionPane.showMessageDialog(null, "Successful sing in");
                 actionFrame.getLoginLabel().setText(labelsBundle.getString("login") + ": " + login);
                 this.isLogin = Boolean.valueOf(true);
                 actionFrame.showCollection();
@@ -164,6 +184,7 @@ public class LogInWindow extends JFrame {
         };
         btnSOK.addActionListener(SOKListener);
         passwordField.addActionListener(SOKListener);
+
         loginRegField.addActionListener((e) -> emailField.requestFocus());
         loginSingField.addActionListener((e) -> passwordField.requestFocus());
         //Buttons returns to choose panel
@@ -182,15 +203,12 @@ public class LogInWindow extends JFrame {
         //Exit buttons
         btnCExit.addActionListener((e) -> System.exit(0));
         btnPExit.addActionListener((e) -> System.exit(0));
-        //Check port and create client
-
-
+        //Create panels
         singInPanel     = PanelsCreator.createSingInPanel(
                 loginSingField, passwordField,
                 btnSOK, btnSCancel,
                 SloginLabel, passwordLabel);
         registerPanel   = PanelsCreator.createRegPanel(loginRegField, emailField, btnROK, btnRCancel, RloginLabel);
-
         GUITools.createRecommendedMargin(new JButton[] {btnSing, btnReg, btnCExit});
         choosePanel = PanelsCreator.createChoosePanel(new JComponent[] {btnSing, btnReg, btnCExit}, SlangComboBox);
 
@@ -201,35 +219,43 @@ public class LogInWindow extends JFrame {
                 portLabel, portField,
                 isTunnelCheckBox, portLogLabel,
                 btnPOK, btnPExit}, PlangComboBox);
+
         ActionListener POKAction = (e) -> {
-            try {
-                port = Integer.valueOf(portField.getText());
-                mainPanel.updateUI();
-                boolean isTunnel = isTunnelCheckBox.isSelected();
-                client = new Client("localhost", port, isTunnel);
-                Client.ClientThread thread = client.createClientThread();
-                actionFrame.setClientThread(thread);
-                card.show(mainPanel, "choose");
-            } catch (NullPointerException | NumberFormatException nullex){
-                portLogLabel.setText(errorsBundle.getString("no_num"));
-            } catch (SQLException ex) {
-                portLogLabel.setText(errorsBundle.getString("db_err"));
-                if (client != null)
-                    client.stop();
-                ex.printStackTrace();
-            } catch (IOException ioex) {
-                portLogLabel.setText(errorsBundle.getString("serv_con_err"));
-                if (client != null)
-                    client.stop();
-                ioex.printStackTrace();
-            } catch (JSchException jex) {
-                portLogLabel.setText(errorsBundle.getString("ssh_err"));
-                if (client != null)
-                    client.stop();
-                jex.printStackTrace();
-            } catch (Exception ne){
-                ne.printStackTrace();
-            }
+            portLogLabel.setText(messageBundle.getString("try"));
+            revalidate();
+            repaint();
+            SwingUtilities.invokeLater(
+                    () -> {
+                        try {
+                            port = Integer.valueOf(portField.getText());
+                            boolean isTunnel = isTunnelCheckBox.isSelected();
+                            client = new Client("localhost", port, isTunnel);
+                            Client.ClientThread thread = client.createClientThread();
+                            actionFrame.setClientThread(thread);
+                            card.show(mainPanel, "choose");
+                        } catch (NumberFormatException nullex){
+                            portLogLabel.setText(errorsBundle.getString("no_num"));
+                        } catch (SQLException ex) {
+                            portLogLabel.setText(errorsBundle.getString("db_err"));
+                            if (client != null)
+                                client.stop();
+                            ex.printStackTrace();
+                        } catch (IOException ioex) {
+                            portLogLabel.setText(errorsBundle.getString("serv_con_err"));
+                            if (client != null)
+                                client.stop();
+                            ioex.printStackTrace();
+                        } catch (JSchException jex) {
+                            portLogLabel.setText(errorsBundle.getString("ssh_err"));
+                            if (client != null)
+                                client.stop();
+                            jex.printStackTrace();
+                        } catch (Exception ne){
+                            ne.printStackTrace();
+                        }
+                    }
+            );
+
         };
         btnPOK.addActionListener(POKAction);
         portField.addActionListener(POKAction);

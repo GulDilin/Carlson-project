@@ -37,9 +37,11 @@ public class AddCommand implements Command {
     @Override
     public void execute(WindowsArrayList windows) {
         windows.setOut(out);
+        System.out.println("line: " + line);
         try {
             JSONObject object = fromStringToJSONObject(line, out);
             Window window = fromJSONToWindow(object, out);
+            window.setOwnerID(userID);
             if (window != null) {
                 if ((dataBaseManager != null) && (dataBaseManager.addWindow(window, userID)))
 

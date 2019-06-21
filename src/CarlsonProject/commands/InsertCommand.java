@@ -22,7 +22,7 @@ public class InsertCommand implements Command {
 
     /**
      * Command to insert element in collection
-     *
+     * string format: index {elem in JSON}
      * @param s String contains window
      */
     public InsertCommand(String s) {

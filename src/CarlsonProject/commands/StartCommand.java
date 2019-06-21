@@ -31,6 +31,15 @@ public class StartCommand implements Command{
         this.out = System.out;
     }
 
+    public StartCommand(){
+        Nurse nurse = new Nurse("Best");
+        NewBaby baby = new NewBaby("Mister", 2);
+        NewCarlson carlson = new NewCarlson("Good Boy");
+        this.baby = baby;
+        this.nurse = nurse;
+        this.carlson = carlson;
+    }
+
     @Override
     public void setUserID(int userID) {
         UserID = userID;
@@ -62,6 +71,9 @@ public class StartCommand implements Command{
     @Override
     public void setOut(PrintStream out) {
         this.out = out;
+        baby.setOut(out);
+        nurse.setOut(out);
+        carlson.setOut(out);
     }
 
     @Override

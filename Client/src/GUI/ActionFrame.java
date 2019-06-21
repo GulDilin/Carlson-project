@@ -12,7 +12,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.IOException;
+import java.io.*;
 import java.net.SocketException;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -26,6 +26,7 @@ public class ActionFrame extends JFrame {
     private JPanel      buttonUsrPanel;
     private JLabel      winName;
     private JPanel      elemPanel;
+    private JTextArea   startPane;
     private JScrollPane elemScroll;
     private JLabel      elemLabel;
     private JButton     startButton;
@@ -42,8 +43,10 @@ public class ActionFrame extends JFrame {
     private JPanel      cardPanel;
     private JLabel      loginLabel;
     private JPanel      scrollPanel;
+    private JPanel      workPanel;
     private LayoutManager   layout;
     private CardLayout      card ;
+    private CardLayout      cardElems ;
     private CommandFrame    commandFrame;
     private Client.ClientThread     clientThread;
     private Boolean     isLogin;
@@ -57,9 +60,11 @@ public class ActionFrame extends JFrame {
     private ResourceBundle messageBundle;
 
     public void updateText(){
+        //update bundles
         labelsBundle    = ResourceBundle.getBundle("Labels", currLocale);
         messageBundle   = ResourceBundle.getBundle("Messages", currLocale);
         errorsBundle    = ResourceBundle.getBundle("Errors", currLocale);
+        //update text
         addButton.setText(labelsBundle.getString("add"));
         removeButton.setText(labelsBundle.getString("remove"));
         removeLastButton.setText(labelsBundle.getString("removelast"));
@@ -73,34 +78,39 @@ public class ActionFrame extends JFrame {
 
     public ActionFrame(String [] langs, boolean isLogin){
         //Set buttons names
+        cardElems = new CardLayout();
+        workPanel = new JPanel();
+        startPane = new JTextArea();
+        //Text panel for console output
+        startPane.setEditable(false);
+        startPane.setPreferredSize(new Dimension(500, 600));
+        startPane.setMaximumSize(new Dimension(500, 600));
+        startPane.setMinimumSize(new Dimension(500, 600));
+        startPane.setFont(new Font("Dialog", Font.BOLD, 18));
+
         addButton.setName("add");
         removeLastButton.setName("remove_last");
         insertButton.setName("insert");
         startButton.setName("start");
         chngUsrBtn.setName("chngus");
         removeButton.setName("remove");
+
+
         this.collectionSize = 0;
+
         ruLocale        = new Locale("ru", "RU");
         this.currLocale = ruLocale;
-        labelsBundle    = ResourceBundle.getBundle("Labels", currLocale);
-        updateText();
         this.isSorted   = false;
         this.isLogin    = isLogin;
         commandFrame    = new CommandFrame();
         commandPanel    = commandFrame.getCommandPanel();
         card            = new CardLayout();
 
+        labelsBundle    = ResourceBundle.getBundle("Labels", currLocale);
+        updateText();
         scrollPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-//                doCommand(new ExitCommand());
-                System.exit(0);
-            }
-        });
-
         for (String lang: langs){
             langComboBox.addItem(lang);
         }
@@ -112,13 +122,14 @@ public class ActionFrame extends JFrame {
         cardPanel.setLayout(card);
         cardPanel.add(buttonPanel, "buttons");
         cardPanel.add(commandPanel, "command");
-
+        //-------------------------------------------------
+        //Set buttons background
         GUITools.setBackground(new JComponent[]{
                 addButton, removeButton, removeButton,
                 sortButton, insertButton, startButton,
                 removeLastButton, LogTF, chngUsrBtn,
-                scrollPanel, langComboBox}, new Color(153,153,153));
-//-------------------------------------------------
+                scrollPanel, langComboBox, workPanel}, new Color(153,153,153));
+        //-------------------------------------------------
         //Change locate
         langComboBox.addActionListener(e -> {
             switch ((String)langComboBox.getSelectedItem()){
@@ -131,50 +142,51 @@ public class ActionFrame extends JFrame {
             }
             updateText();
         });
-//--------------------------------------------------
-//Add funcs for buttons
-        sortButton.addActionListener(e -> isSorted = true);
-        for (JButton button: new JButton[] {removeLastButton, startButton}) {
-            button.addActionListener(e -> {
-                Command command = null;
-                System.out.println("button name: " + button.getName());
-                switch (button.getName()){
-                    case "remove_last":
-                        command = new RemoveLastCommand();
-                        break;
-                    case "start":
-                        break;
-//                        default:
-//                            return;
-                }
-                if (command != null)
-                try {
-                    clientThread.doCommand(command);
-                    card.show(cardPanel, "buttons");
-                    showCollection();
-//                    LogTF.setText("Execute ");
-                } catch (SocketException soex) {
-                    soex.printStackTrace();
-                    LogTF.setText(errorsBundle.getString("serv_con_err"));
-                    this.setVisible(false);
-                    logInWindow.setVisible(true);
-                    logInWindow.connectServer();
+        //--------------------------------------------------
+        //Add action to sort Button
+        sortButton.addActionListener(e -> {
+            isSorted = !isSorted;
+            showCollection();
+        });
+        //--------------------------------------------------
+        //Add action to start Button
+        startButton.addActionListener(e -> {
+            scrollPanel.removeAll();
+            revalidate();
+            repaint();
+            startPane.setText(" ");
+            scrollPanel.add(startPane);
+            OutputStream out = new TextAreaOutputStream(startPane);
+            try {
+                PrintStream pout = new PrintStream(out, true, "UTF-8");
+                WindowsArrayList windows = clientThread.getWindows();
+                Command start = new StartCommand();
+                start.setOut(pout);
+                windows.setOut(pout);
+                start.execute(windows);
+                revalidate();
+                repaint();
 
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                    LogTF.setText("Command Execute Error");
-                } else {
-                    LogTF.setText("Command Execute Error");
-                }
-            });
-        }
+            } catch (UnsupportedEncodingException ex){
+                ex.printStackTrace();
+            }
+        });
+        //-----------------------------------------
+        //Add action to remove last button
+        removeLastButton.addActionListener(e -> {
+            Command command;
+            showCollection();
+            command = new RemoveLastCommand();
+            doCommand(command);
+        });
+        //-------------------------------------------
+        //Add actions to add, insert and remove buttons
         for (JButton button: new JButton[] {addButton, insertButton, removeButton})
         {
             JLabel logLabel = commandFrame.getLogLabel();
             commandFrame.getColorTF().requestFocus();
             logLabel.setText(" ");
             button.addActionListener((e) -> {
-
                 cmndName = button.getName().toLowerCase();
                 if (button.getName().equals("insert")){
                     commandFrame.setIndexVisible(true);
@@ -185,8 +197,8 @@ public class ActionFrame extends JFrame {
 
             });
         }
-//--------------------------------------------------
-//Creating command func
+        //--------------------------------------------------
+        //Add actions on OK button on command panel
         JButton btnCmndOK = commandFrame.getOKButton();
         ActionListener comndOK = (e) -> {
             Command command = null;
@@ -214,6 +226,7 @@ public class ActionFrame extends JFrame {
             }
 
             try{
+                //Try to get double from textfields
                 HC = Double.parseDouble(HCTF.getText());
                 SC = Double.parseDouble(SCTF.getText());
                 OC = Double.parseDouble(OCTF.getText());
@@ -248,25 +261,9 @@ public class ActionFrame extends JFrame {
                     command = new InsertCommand(index + " " + line);
                     break;
             }
-            try {
-                clientThread.doCommand(command);
-                card.show(cardPanel, "buttons");
-                showCollection();
-//                LogTF.setText("Element Added");
-            } catch (SocketException soex){
-                soex.printStackTrace();
-                LogTF.setText(errorsBundle.getString("serv_con_err"));
-                this.setVisible(false);
-                logInWindow.setVisible(true);
-                logInWindow.connectServer();
-
-            } catch (IOException ex){
-                ex.printStackTrace();
-                LogTF.setText(errorsBundle.getString("cmnd_err"));
-            } catch (NullPointerException ex){
-                ex.printStackTrace();
-            }
+            doCommand(command);
         };
+
         commandFrame.getRCTF().addActionListener(comndOK);
         btnCmndOK.addActionListener(comndOK);
 
@@ -281,18 +278,22 @@ public class ActionFrame extends JFrame {
         commandFrame.getCANCELButton().addActionListener((e) ->
             card.show(cardPanel, "buttons"));
 
+        //Set same background
         GUITools.setBackground(new JComponent[]{buttonUsrPanel, elemPanel, elemScroll,
-                usrPanel, mainPanel, userLogoPanel, buttonPanel}, new Color(0x0084DB));
+                usrPanel, mainPanel, userLogoPanel, buttonPanel, startPane, workPanel}, new Color(0x0084DB));
         card.show(cardPanel, "buttons");
     }
-//--------------------------------------------------
-//    RCTF.addActionListener(cmndOK);
+    //--------------------------------------------------
 
+    /**
+     * Add panels on panel with elements
+     */
     public void showCollection(){
-
+        scrollPanel.removeAll();
+        revalidate();
+        repaint();
         try{
             collectionSize = 0;
-            scrollPanel.removeAll();
             System.out.println(clientThread.toString());
             WindowsArrayList windows = clientThread.getWindows();
             System.out.println(windows.toArray());
@@ -301,20 +302,39 @@ public class ActionFrame extends JFrame {
             for (CarlsonProject.plot.Window window: windows.toArray()){
                 System.out.println(window.toString());
                 scrollPanel.add(GUITools.createElement(window));
+                revalidate();
+                repaint();
                 collectionSize++;
             }
+            revalidate();
+            repaint();
         } catch (NullPointerException ex) { ex.printStackTrace();}
     }
 
+    /**
+     * execute command on server
+     * @param command command to execute
+     */
     private void doCommand(Command command){
         try {
             clientThread.doCommand(command);
-        } catch (IOException ex) {
-            LogTF.setText(errorsBundle.getString("cmnd_err"));
-        } catch (NullPointerException ex) {
+            showCollection();
+        } catch (SocketException soex){
+            soex.printStackTrace();
+            logInWindow.getPortLogLabel().setText(errorsBundle.getString("serv_con_err"));
+            this.setVisible(false);
+            logInWindow.setVisible(true);
+            logInWindow.connectServer();
 
+        } catch (IOException ex){
+            ex.printStackTrace();
+            LogTF.setText(errorsBundle.getString("cmnd_err"));
+        } catch (NullPointerException ex){
+            ex.printStackTrace();
         }
+        showCollection();
     }
+
     public JButton getChngUsrBtn() {
         return chngUsrBtn;
     }
@@ -333,5 +353,36 @@ public class ActionFrame extends JFrame {
 
     public void setLogInWindow(LogInWindow logInWindow) {
         this.logInWindow = logInWindow;
+    }
+}
+
+class TextAreaOutputStream extends OutputStream
+{
+    private final JTextArea textArea;
+
+    private final StringBuilder sb = new StringBuilder();
+
+    public TextAreaOutputStream(final JTextArea textArea)
+    {
+        this.textArea = textArea;
+    }
+    @Override
+    public void write(int b) throws IOException
+    {
+        if (b == '\r')
+            return;
+        if (b == '\n')
+        {
+            final String text = sb.toString() + "\n";
+            SwingUtilities.invokeLater(new Runnable()
+            {
+                public void run()
+                {
+                    textArea.append(text);
+                }
+            });
+            sb.setLength(0);
+        }
+        sb.append((char) b);
     }
 }

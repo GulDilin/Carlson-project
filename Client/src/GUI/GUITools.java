@@ -3,6 +3,8 @@ package GUI;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Locale;
 
 public class GUITools
@@ -41,10 +43,6 @@ public class GUITools
 			components[i].setMinimumSize(maxSize);
 			components[i].setMaximumSize(maxSize);
 		}
-	}
-
-	public static void setLocaleText(JComponent[] components, Locale locale){
-
 	}
 
 	public static void logLabelSettings(JLabel label){
@@ -152,6 +150,17 @@ public class GUITools
 				color = Color.YELLOW;
 				break;
 		}
+		panel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                JOptionPane.showMessageDialog( null,"ID " + window.getOwnerID()
+                        + "\n SC: " + window.getSpeakChance()
+                        + "\n OC: " + window.getOpenChance()
+                        + "\n HC: " + window.getHoleChance()
+                        + "\n RC: " + window.getRobberChance());
+            }
+        });
 		panel.setBackground(color);
 		panel.setMinimumSize(new Dimension(40, 40));
 		panel.setMaximumSize(new Dimension(40, 40));

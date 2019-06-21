@@ -39,9 +39,9 @@ public class RemoveCommand implements Command {
         try{
         JSONObject object = fromStringToJSONObject(s, out);
         Window window = fromJSONToWindow(object, out);
-//        dataBaseManager.deleteWindow(window, UserID, userHash);
+//        dataBaseManager.removeWindow(window, UserID, userHash);
             if (window != null) {
-                if ((dataBaseManager != null) && (dataBaseManager.deleteWindow(window, UserID, userHash)))
+                if ((dataBaseManager != null) && (dataBaseManager.removeWindow(window, UserID, userHash)))
                     windows.remove(window);
             }
         } catch (NullPointerException ex) {
