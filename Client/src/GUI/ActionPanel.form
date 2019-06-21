@@ -32,17 +32,6 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="16ac0" class="javax.swing.JTextField" binding="loginTextField" default-binding="true">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <font name="Consolas" size="16"/>
-                  <text value="login"/>
-                </properties>
-              </component>
               <grid id="f7651" binding="userLogoPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
@@ -52,6 +41,15 @@
                 <border type="none"/>
                 <children/>
               </grid>
+              <component id="b20de" class="javax.swing.JLabel" binding="loginLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Consolas" size="16"/>
+                  <text value="login"/>
+                </properties>
+              </component>
             </children>
           </grid>
           <component id="32188" class="javax.swing.JLabel" binding="buttonLabel">
@@ -162,7 +160,15 @@
             <border type="empty">
               <title-color color="-4473925"/>
             </border>
-            <children/>
+            <children>
+              <grid id="9da20" binding="scrollPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints/>
+                <properties/>
+                <border type="none"/>
+                <children/>
+              </grid>
+            </children>
           </scrollpane>
           <component id="c51a7" class="javax.swing.JLabel" binding="elemLabel">
             <constraints>
@@ -182,6 +188,8 @@
           </grid>
         </constraints>
         <properties>
+          <font name="Consolas" size="16"/>
+          <foreground color="-7388601"/>
           <text value=""/>
         </properties>
       </component>

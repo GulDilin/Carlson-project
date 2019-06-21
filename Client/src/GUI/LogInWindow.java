@@ -1,92 +1,256 @@
 package GUI;
 
 import client.Client;
+import com.jcraft.jsch.JSchException;
 import server.DataBaseManager;
 
+import javax.imageio.IIOException;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 import static GUI.GUITools.*;
 
 public class LogInWindow extends JFrame {
 
-    public LogInWindow(Client client, ActionFrame actionFrame){
+    private String      login               = "";
+    private String      password            = "";
+    private Client      client;
+    private int         port;
+    private Boolean     isLogin;
+    private CardLayout  card;
+    private JPanel      mainPanel;
+    private JPanel          choosePanel;
+    private JPanel          singInPanel;
+    private JPanel          registerPanel;
+    private JLabel          portLogLabel;
+    private JLabel          portLabel;
+    private JLabel          SloginLabel;
+    private JLabel          RloginLabel;
+    private JLabel          passwordLabel;
+    private Locale currLocale;
+    private ResourceBundle labelsBundle;
+    private ResourceBundle messageBundle;
+    private ResourceBundle errorsBundle;
+    private     JPanel          portPanel;
+    private     JCheckBox       isTunnelCheckBox;
+    private     JButton         btnPOK;
+    private     JButton         btnReg;
+    private     JButton         btnCExit;
+    private     JButton         btnPExit;
+    private     JButton         btnSOK;
+    private     JButton         btnSCancel;
+    private     JButton         btnROK;
+    private     JButton         btnRCancel;
+    private     JButton         btnSing;
+    private     Locale          ruLocale;
+
+
+    public void updateText(){
+        labelsBundle    = ResourceBundle.getBundle("Labels", currLocale);
+        messageBundle    = ResourceBundle.getBundle("Messages", currLocale);
+        errorsBundle    = ResourceBundle.getBundle("Errors", currLocale);
+        btnSing.setText(labelsBundle.getString("singin"));
+        btnReg.setText(labelsBundle.getString("register"));
+        btnCExit.setText(labelsBundle.getString("exit"));
+        btnPExit.setText(labelsBundle.getString("exit"));
+        btnRCancel.setText(labelsBundle.getString("cancel"));
+        btnSCancel.setText(labelsBundle.getString("cancel"));
+        SloginLabel.setText(labelsBundle.getString("login"));
+        RloginLabel.setText(labelsBundle.getString("login"));
+        passwordLabel.setText(labelsBundle.getString("pass"));
+        portLabel.setText(messageBundle.getString("insert_port"));
+        isTunnelCheckBox.setText(labelsBundle.getString("tunnel"));
+    }
+
+
+    public LogInWindow(ActionFrame actionFrame, Boolean isLogin){
+        this.isLogin = isLogin;
+        actionFrame.setLogInWindow(this);
+        ruLocale                            = new Locale("ru", "RU");
+        this.currLocale                     = ruLocale;
         Container       contentPane         = this.getContentPane();
-        JPanel          mainPanel           = new JPanel();
-        JPanel          choosePanel;
-        JPanel          singInPanel;
-        JPanel          registerPanel;
+        mainPanel                           = new JPanel();
+        SloginLabel                         = new JLabel("LOGIN");
+        RloginLabel                         = new JLabel("LOGIN");
+        passwordLabel                       = new JLabel("PASSWORD");
+
+        isTunnelCheckBox                    = GUITools.createCheckBox("TUNNEL");
         String          languages[]         = {"Русский", "English"};
-        JComboBox       langComboBox        = new JComboBox(languages);
-        CardLayout      card                = new CardLayout();
+        JComboBox       SlangComboBox       = new JComboBox(languages);
+        JComboBox       PlangComboBox       = new JComboBox(languages);
+
+        card                = new CardLayout();
         JTextField      loginSingField      = GUITools.createTField(15);
         JTextField      loginRegField       = GUITools.createTField(20);
         JTextField      emailField          = GUITools.createTField(20);
+        JTextField      portField           = GUITools.createTField(6);
         JPasswordField  passwordField       = GUITools.createPField(15);
         SpringLayout    springLayout        = new SpringLayout();
+        //Buttons on port Panel
+        btnPOK              = createButton("OK");
+        btnPExit            = createButton("EXIT");
+        //Buttons on choose panel
+        btnSing          = createButton("SING IN");
+        btnReg           = createButton("REGISTER");
+        btnCExit          = createButton("EXIT");
         //Buttons on Sing in panel
-        JButton         btnSOK              = createButton("OK");
-        JButton         btnSCancel          = createButton("CANCEL");
-        //Buttons on Reg panel
-        JButton         btnROK              = createButton("OK");
-        JButton         btnRCancel          = createButton("CANCEL");
 
+        btnSOK              = createButton("OK");
+        btnSCancel          = createButton("CANCEL");
+        //Buttons on Reg panel
+        btnROK              = createButton("OK");
+        btnRCancel          = createButton("CANCEL");
+        portLabel           = createLabel("insert_port");
+
+        SloginLabel.setFont(new Font("Impact", Font.PLAIN, 18));
+        passwordLabel.setFont(new Font("Impact", Font.PLAIN, 18));
+        updateText();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        ActionListener langSwitch = e -> {
+            switch (SlangComboBox.getSelectedIndex()){
+                case 0:
+                    currLocale = ruLocale;
+                    break;
+                case 1:
+                    currLocale = Locale.ENGLISH;
+                    break;
+            }
+            updateText();
+        };
+        SlangComboBox.addActionListener(langSwitch);
+        PlangComboBox.addActionListener(langSwitch);
+
         btnROK.addActionListener((e) ->
             {
-                String password = DataBaseManager.getRandomPassword(4);
-                if (client.hasLogin(loginRegField.getText())) {
-                    JOptionPane.showMessageDialog(null, "Login already exist");
+                this.password   = DataBaseManager.getRandomPassword(4);
+                this.login      = loginRegField.getText();
+                if (client.hasLogin(login)) {
+                    JOptionPane.showMessageDialog(null, errorsBundle.getString("log_err"));
                 }
-                if(client.register(loginRegField.getText(), emailField.getText(), password)) {
-                    JOptionPane.showMessageDialog(null, "Successful Registration" +
-                            "\nYour password: " + password);
+                if(client.register(this.login, emailField.getText(), password)) {
+                    JOptionPane.showMessageDialog(null, messageBundle.getString("reg_suc")
+                            + password);
+                    this.isLogin = Boolean.valueOf(true);
+                    actionFrame.showCollection();
                     this.setVisible(false);
                     actionFrame.setVisible(true);
-
                 } else {
-                    JOptionPane.showMessageDialog(null, "Registration Error");
+                    JOptionPane.showMessageDialog(null, errorsBundle.getString("reg_err"));
                 }
             });
 
-        btnSOK.addActionListener((e)->
-            {
-                if(client.singIn(loginSingField.getText(), passwordField.getText())){
-                    JOptionPane.showMessageDialog(null, "Successful sing in");
-                    this.setVisible(false);
-                    actionFrame.setVisible(true);
-                } else if (!client.hasLogin(loginSingField.getText())) {
-                    JOptionPane.showMessageDialog(null, "No such user");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Wrong Login or password");
-                }
-            });
-        btnRCancel.addActionListener((e) -> card.show(mainPanel, "choose"));
-
-        btnSCancel.addActionListener((e) -> card.show(mainPanel, "choose"));
-
-        singInPanel = PanelsCreator.createSingInPanel(loginSingField, passwordField, btnSOK, btnSCancel);
-        registerPanel = PanelsCreator.createRegPanel(loginRegField, emailField, btnROK, btnRCancel);
+        ActionListener SOKListener = (e)->
+        {
+            this.login       = loginSingField.getText();
+            this.password    = passwordField.getText();
+            if(client.singIn(login, password)){
+//                    JOptionPane.showMessageDialog(null, "Successful sing in");
+                actionFrame.getLoginLabel().setText(labelsBundle.getString("login") + ": " + login);
+                this.isLogin = Boolean.valueOf(true);
+                actionFrame.showCollection();
+                this.setVisible(false);
+                actionFrame.setVisible(true);
+            } else if (!client.hasLogin(loginSingField.getText())) {
+                JOptionPane.showMessageDialog(null, errorsBundle.getString("no_such_user"));
+            } else {
+                JOptionPane.showMessageDialog(null, errorsBundle.getString("wr_pass"));
+            }
+        };
+        btnSOK.addActionListener(SOKListener);
+        passwordField.addActionListener(SOKListener);
+        loginRegField.addActionListener((e) -> emailField.requestFocus());
+        loginSingField.addActionListener((e) -> passwordField.requestFocus());
+        //Buttons returns to choose panel
+        btnRCancel.addActionListener((e)    -> card.show(mainPanel, "choose"));
+        btnSCancel.addActionListener((e)    -> card.show(mainPanel, "choose"));
         //Buttons on Sing In and Registration panels
-        JButton         singButton          = createButton("SING IN");
-        singButton.addActionListener((e) -> card.show(mainPanel, "sing"));
+        btnSing.addActionListener((e)       -> {card.show(mainPanel, "sing");
+            loginSingField.requestFocus();});
+        btnReg.addActionListener((e)        -> {card.show(mainPanel, "reg");
+            loginRegField.requestFocus();});
+        //After singing in
+        actionFrame.getChngUsrBtn().addActionListener((e) -> {
+            this.setVisible(true);
+            actionFrame.setVisible(false);
+        });
+        //Exit buttons
+        btnCExit.addActionListener((e) -> System.exit(0));
+        btnPExit.addActionListener((e) -> System.exit(0));
+        //Check port and create client
 
-        JButton         regButton           = createButton("REGISTER");
-        regButton.addActionListener((e) -> card.show(mainPanel, "reg"));
 
-        JButton         exitButton          = createButton("EXIT");
-        exitButton.addActionListener((e) -> System.exit(0));
+        singInPanel     = PanelsCreator.createSingInPanel(
+                loginSingField, passwordField,
+                btnSOK, btnSCancel,
+                SloginLabel, passwordLabel);
+        registerPanel   = PanelsCreator.createRegPanel(loginRegField, emailField, btnROK, btnRCancel, RloginLabel);
 
-        GUITools.createRecommendedMargin(new JButton[] {singButton, regButton, exitButton});
-        choosePanel = PanelsCreator.createChoosePanel(new JComponent[] {singButton, regButton, exitButton}, langComboBox);
+        GUITools.createRecommendedMargin(new JButton[] {btnSing, btnReg, btnCExit});
+        choosePanel = PanelsCreator.createChoosePanel(new JComponent[] {btnSing, btnReg, btnCExit}, SlangComboBox);
+
+        portLogLabel = createLabel(" ");
+        portLogLabel.setFont(new Font("Dialog", Font.BOLD, 18));
+        portLogLabel.setForeground(new Color(0x8F4247));
+        portPanel   = PanelsCreator.createChoosePanel(new JComponent[]{
+                portLabel, portField,
+                isTunnelCheckBox, portLogLabel,
+                btnPOK, btnPExit}, PlangComboBox);
+        ActionListener POKAction = (e) -> {
+            try {
+                port = Integer.valueOf(portField.getText());
+                mainPanel.updateUI();
+                boolean isTunnel = isTunnelCheckBox.isSelected();
+                client = new Client("localhost", port, isTunnel);
+                Client.ClientThread thread = client.createClientThread();
+                actionFrame.setClientThread(thread);
+                card.show(mainPanel, "choose");
+            } catch (NullPointerException | NumberFormatException nullex){
+                portLogLabel.setText(errorsBundle.getString("no_num"));
+            } catch (SQLException ex) {
+                portLogLabel.setText(errorsBundle.getString("db_err"));
+                if (client != null)
+                    client.stop();
+                ex.printStackTrace();
+            } catch (IOException ioex) {
+                portLogLabel.setText(errorsBundle.getString("serv_con_err"));
+                if (client != null)
+                    client.stop();
+                ioex.printStackTrace();
+            } catch (JSchException jex) {
+                portLogLabel.setText(errorsBundle.getString("ssh_err"));
+                if (client != null)
+                    client.stop();
+                jex.printStackTrace();
+            } catch (Exception ne){
+                ne.printStackTrace();
+            }
+        };
+        btnPOK.addActionListener(POKAction);
+        portField.addActionListener(POKAction);
 
         mainPanel.setLayout(card);
+        mainPanel.add(portPanel, "port");
         mainPanel.add(choosePanel, "choose");
         mainPanel.add(singInPanel, "sing");
         mainPanel.add(registerPanel, "reg");
 
-        card.show(mainPanel, "choose");
+        card.show(mainPanel, "port");
         contentPane.add(mainPanel);
         this.setPreferredSize(new Dimension(500, 400));
         pack();
+    }
+
+    public void connectServer(){
+        card.show(mainPanel, "port");
+    }
+
+    public JLabel getPortLogLabel() {
+        return portLogLabel;
     }
 }

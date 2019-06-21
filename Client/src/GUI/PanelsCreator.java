@@ -1,8 +1,11 @@
 package GUI;
 
+import CarlsonProject.commands.Command;
 import sun.java2d.windows.GDIRenderer;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import static GUI.GUITools.*;
 import static javax.swing.SpringLayout.*;
@@ -16,13 +19,10 @@ public class PanelsCreator {
                                            JTextField       tfPassword,
                                            JButton          btnOk,
                                            JButton          btnCancel,
-                                           String           nLabel,
-                                           String           pLabel){
+                                           JLabel           nameLabel,
+                                           JLabel           passwrdLabel){
 
-        JLabel          nameLabel       = new JLabel(nLabel);
         nameLabel.setFont(new Font("Impact", Font.PLAIN, 18));
-
-        JLabel          passwrdLabel    = new JLabel(pLabel);
         passwrdLabel.setFont(new Font("Impact", Font.PLAIN, 18));
 
         JPanel          panel           = new JPanel();
@@ -86,20 +86,13 @@ public class PanelsCreator {
         return panel;
     }
 
-    public static JPanel createSingInPanel(JTextField       tfLogin,
-                                           JPasswordField   tfPassword,
-                                           JButton          btnOk,
-                                           JButton          btnCancel){
-        return createSingInPanel(tfLogin, tfPassword, btnOk, btnCancel,
-                "LOGIN:" , "PASSWORD:");
-    }
-
     public static JPanel createRegPanel(JTextField       tfLogin,
                                            JTextField   tfPassword,
                                            JButton          btnOk,
-                                           JButton          btnCancel){
+                                           JButton          btnCancel,
+                                           JLabel           loginLabel){
         return createSingInPanel(tfLogin, tfPassword, btnOk, btnCancel,
-                "LOGIN:", "E-MAIL:");
+                loginLabel, new JLabel("E-MAIL:"));
     }
 
     public static JPanel createChoosePanel(JComponent[] buttons, JComboBox comboBox){
@@ -127,13 +120,21 @@ public class PanelsCreator {
 
         }
         GUITools.setBackground(new JComponent[]{buttonPanel, choosePanel}, new Color(0x0084DB));
-        comboBox.setBackground(new Color(153, 153, 153));
         constraints.fill = GridBagConstraints.NONE;
         constraints.ipadx = 0;
 //        constraints.anchor    = GridBagConstraints.PAGE_END;
         constraints.insets    = new Insets(80, 0, 0, 0);  // граница ячейки по Y
         constraints.gridwidth = 1;    // размер кнопки в 2 ячейки
-        choosePanel.add(comboBox, constraints);
+        if (comboBox != null) {
+            comboBox.setBackground(new Color(153, 153, 153));
+            choosePanel.add(comboBox, constraints);
+        }
         return choosePanel;
     }
+
+
+//    public static JPanel createPortPanel(JComponent[] components){
+//        JPanel          portPanel           = new JPanel();
+//        JLabel          projectLabel        = new JLabel("CARLSON-PROJECT");
+//    }
 }
