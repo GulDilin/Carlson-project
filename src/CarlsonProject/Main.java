@@ -44,12 +44,11 @@ public class Main {
                     exit = ((ExitCommand) command).isExit();
                 } catch (ClassCastException e) {
                 }
-                    if(windows == null){
+                    if(windows != null){
                         System.out.println("Null Window Error");
+                        command.execute(windows);
                     }
-                    command.execute(windows);
                 }
-
         }
     }
 }

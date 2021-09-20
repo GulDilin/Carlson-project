@@ -1,5 +1,6 @@
 package CarlsonProject.plot;
 
+import java.io.PrintStream;
 import java.io.Serializable;
 
 public class Nurse implements Talkable, Serializable {
@@ -61,5 +62,8 @@ public class Nurse implements Talkable, Serializable {
         if (!isVisible){
             System.out.println(this.name + " Няня спряталась за трубу\n");
         }
+    }
+
+    public void setOut(PrintStream out) {
     }
 }

@@ -43,7 +43,6 @@ public class ConnectCommand implements Command {
     @Override
     public void setUserHash(String user, String password) {
         this.userHash = DataBaseManager.getMD5(user) + DataBaseManager.getMD5(password);
-
     }
 
     @Override

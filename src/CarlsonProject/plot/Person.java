@@ -1,5 +1,6 @@
 package CarlsonProject.plot;
 
+import java.io.PrintStream;
 import java.io.Serializable;
 
 //abstract class for realise Carlson and Baby
@@ -61,4 +62,6 @@ public abstract class Person implements EnduranceChanger, Serializable {
         }
         return x % 7757;
     }
+
+    public abstract void setOut(PrintStream out);
 }
