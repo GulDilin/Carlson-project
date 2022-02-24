@@ -9,39 +9,31 @@ import server.DataBaseManager;
 
 import javax.mail.internet.AddressException;
 import java.sql.SQLException;
-import java.util.HashSet;
 import java.util.Scanner;
 
 import static java.lang.System.exit;
-import static server.DataBaseManager.getMD5;
 
 public class Client {
-    private Socket socket;
-    private InetAddress serverAdress;
-    private int port;
+    private final Socket socket;
     private boolean isWorking;
     private int userId;
-    private String defaultFilename;
-    private HashSet<String> user_logins = new HashSet<>();
-    private DataBaseManager dataBaseManager;
-    private Tunnel tunnel;
+    private final DataBaseManager dataBaseManager;
     private String login = "";
     private String password = "";
 
     public Client(String serverAdress, int port) throws IOException, SQLException {
         isWorking = true;
         dataBaseManager = new DataBaseManager("studs", 7878, true);
-        this.serverAdress = InetAddress.getByName(serverAdress);
-        this.port = port;
-        this.tunnel = new Tunnel("helios.se.ifmo.ru",
+        InetAddress serverAdress1 = InetAddress.getByName(serverAdress);
+        Tunnel tunnel = new Tunnel("helios.se.ifmo.ru",
                 "user",
                 "password",
                 2222,
-                "localhost",
+                serverAdress,
                 port,
                 port);
-        this.tunnel.connect();
-        socket = new Socket("localhost", port);
+        tunnel.connect();
+        socket = new Socket(serverAdress, port);
 
     }
 
@@ -71,14 +63,15 @@ public class Client {
             String response;
 
             while (isWorking) {
-                Command command = UserHandler.getInput("Type command (help): ", HELP, defaultFilename);
+                Command command = UserHandler.getInput("Type command (help): ", HELP, "");
+                assert command != null;
                 command.setUserID(userId);
                 command.setUserHash(login, password);
                 oos.writeObject(command);
                 try {
                     response = (String) ois.readObject();
                     System.out.println(response);
-                    isWorking = response.contains("Exit") ? false : true;
+                    isWorking = !response.contains("Exit");
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
@@ -157,7 +150,7 @@ public class Client {
             System.out.print("Try to connect server");
             try {
                 System.out.println();
-                Client sender = new Client("localhost", Integer.valueOf(args[0]));
+                Client sender = new Client("localhost", Integer.parseInt(args[0]));
                 System.out.println("Hello there");
                 System.out.println("Server connected");
                 sender.logIn();

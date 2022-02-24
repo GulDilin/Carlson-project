@@ -20,15 +20,9 @@ import static java.lang.System.out;
 
 
 public class DataBaseManager {
-    private String user = "user";
-    private String password = "password";
-    private String host = "helios.se.ifmo.ru";
-    private String rhost = "pg";
-    private Connection connection;
     private Statement stmt = null;
-    private int assignPort = 0;
     private transient PrintStream out;
-    private HashSet<String> user_logins = new HashSet<>();
+    private final HashSet<String> user_logins = new HashSet<>();
 
 
     /**
@@ -40,6 +34,10 @@ public class DataBaseManager {
     public DataBaseManager(String dbName, int lPort, boolean isTunnel) throws SQLException {
         try {
             this.out = System.out;
+            String user = "user";
+            String password = "password";
+            String host = "helios.se.ifmo.ru";
+            String rhost = "pg";
             Tunnel tunnel = new Tunnel(host,
                     user,
                     password,
@@ -47,6 +45,7 @@ public class DataBaseManager {
                     rhost,
                     lPort,
                     5432);
+            int assignPort = 0;
             if (isTunnel)
                 assignPort = tunnel.connect();
             Class.forName("org.postgresql.Driver");
@@ -54,7 +53,7 @@ public class DataBaseManager {
             try {
                 System.out.println("Try to connect database...");
 
-                connection = DriverManager
+                Connection connection = DriverManager
                         .getConnection("jdbc:postgresql://localhost:" + assignPort + "/" + dbName,
                                 user,
                                 password);
@@ -101,7 +100,7 @@ public class DataBaseManager {
     }
 
     /**
-     * @return
+     * @return WindowsArrayList
      */
     public WindowsArrayList getWindows() {
         CopyOnWriteArrayList<Window> windows = new CopyOnWriteArrayList<>();
@@ -188,16 +187,16 @@ public class DataBaseManager {
         }
         JSONObject object = fromStringToJSONObject(window.toString());
         System.out.println(object.toString());
-        String speakChance = "";
-        String holeChance = "";
-        String openChance = "";
-        String robberChance = "";
-        String color = "";
-        color = (String) object.get("color");
-        holeChance = (String) object.get("holeChance");
-        speakChance = (String) object.get("speakChance");
-        robberChance = (String) object.get("robberChance");
-        openChance = (String) object.get("openChance");
+//        String speakChance = "";
+//        String holeChance = "";
+//        String openChance = "";
+//        String robberChance = "";
+//        String color = "";
+        String color = (String) object.get("color");
+        String holeChance = (String) object.get("holeChance");
+        String speakChance = (String) object.get("speakChance");
+        String robberChance = (String) object.get("robberChance");
+        String openChance = (String) object.get("openChance");
         System.out.println("Try to remove " + window.toString());
         out.println("DELETE FROM collection" +
                 " WHERE speak_chance = " + speakChance
@@ -318,5 +317,13 @@ public class DataBaseManager {
 
     public void setOut(PrintStream out) {
         this.out = out;
+    }
+
+    public boolean removeWindow(Window window, int userID, String userHash) {
+        return true;
+    }
+
+    public boolean removeLastWindow(int userID, String userHash) {
+        return true;
     }
 }

@@ -31,15 +31,16 @@ public class UserHandler implements Serializable {
                 .replaceAll("[\\s]{2,}", " ")
                 .replaceAll(" :", ":")
                 .replaceAll(": ", ":");
-        s = "";
 
+        StringBuilder sBuilder = new StringBuilder();
         for (String term_s : result.split(" ")) {
             try {
-                s += "\"" + term_s.split(":")[0] + "\":\"" + term_s.split(":")[1] + "\", ";
+                sBuilder.append("\"").append(term_s.split(":")[0]).append("\":\"").append(term_s.split(":")[1]).append("\", ");
             } catch (ArrayIndexOutOfBoundsException e){
                     //
             }
         }
+        s = sBuilder.toString();
         result = s.trim()
                 .replace("\"c\":", "\"color\":")
                 .replace("\"sc\":", "\"speakChance\":")
@@ -59,13 +60,12 @@ public class UserHandler implements Serializable {
      */
     public static Command getInput(String message, String HELP, String defaultFileName) {
         Command command = null;
-        boolean flag = true;
         final String[] SET_VALUES = new String[]{"save", "info", "sort", "add", "insert",
                 "import", "help", "show", "remove", "remove_last", "start", "exit", "check"};
         final Set<String> COMMAND_NAMES = new HashSet<>(Arrays.asList(SET_VALUES));
 
 
-        while (flag) {
+        while (true) {
             System.out.print(message);
             Scanner in = new Scanner(System.in);
             String[] s = in.nextLine().split(" ", 2);
@@ -110,7 +110,7 @@ public class UserHandler implements Serializable {
                     try {
                         command = new ImportCommand( line);
                     } catch (ArrayIndexOutOfBoundsException e1) {
-                        command = new ImportCommand(defaultFileName);
+                            command = new ImportCommand(defaultFileName);
 
                     }
                     break;
@@ -150,7 +150,7 @@ public class UserHandler implements Serializable {
 
                 case "add":
                     try {
-                        if ((line.replaceAll(" ","") == "")){
+                        if ((line.replaceAll(" ", "").equals(""))){
                             System.out.println("No element error");
                         }
                         command = new AddCommand( fromUserStringToJSONString(line));
@@ -160,14 +160,13 @@ public class UserHandler implements Serializable {
                     break;
 
                 case "exit":
-                    flag = false;
                     command = new ExitCommand();
+                    return command;
             }
 
             if (command != null) {
                 return command;
             }
         }
-        return null;
     }
 }

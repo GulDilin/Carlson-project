@@ -14,7 +14,7 @@ public class AddCommand implements Command {
     /**
      * Command, which realise add new elem to collection from user input
      */
-    private String line;
+    private final String line;
     private transient PrintStream out;
     private int userID;
     private String userHash;

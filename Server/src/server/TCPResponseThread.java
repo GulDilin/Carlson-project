@@ -11,15 +11,14 @@ import java.nio.channels.DatagramChannel;
 
 public class TCPResponseThread extends Thread {
 
-    private WindowsArrayList windowsArrayList;
+    private final WindowsArrayList windowsArrayList;
     private ByteBuffer buffer;
     private DatagramChannel channel;
-    private Socket tcpSock;
+    private final Socket tcpSock;
     private Command command;
-    private DataBaseManager dataBaseManager;
+    private final DataBaseManager dataBaseManager;
 
-    public TCPResponseThread(Socket tcpSock,
-                          WindowsArrayList windowsArrayList, DataBaseManager dataBaseManager ){
+    public TCPResponseThread(Socket tcpSock, WindowsArrayList windowsArrayList, DataBaseManager dataBaseManager ){
         super();
         this.windowsArrayList = windowsArrayList;
         this.tcpSock = tcpSock;
@@ -45,10 +44,12 @@ public class TCPResponseThread extends Thread {
                 printStream.println();
                 command.setOut(printStream);
                 command.setDataBaseManager(dataBaseManager);
-                System.out.println("User hash: " + command.getUserHash());
-                System.out.println("User ID: " + command.getUserId());
-                System.out.println("databaseManager: " + dataBaseManager.toString());
-                System.out.println(dataBaseManager.checkUser(command.getUserHash(), command.getUserId()));
+//                System.out.println("User hash: " + command.getUserHash());
+//                System.out.println("User ID: " + command.getUserId());
+//                System.out.println("databaseManager: " + dataBaseManager.toString());
+//                System.out.println(dataBaseManager.checkUser(command.getUserHash(), command.getUserId()));
+                printUserStatus();
+
                 try {
                     if (dataBaseManager.checkUser(command.getUserHash(), command.getUserId()))
                         command.execute(windowsArrayList);
@@ -71,5 +72,12 @@ public class TCPResponseThread extends Thread {
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    private void printUserStatus(){
+        System.out.println("User hash: " + command.getUserHash());
+        System.out.println("User ID: " + command.getUserId());
+        System.out.println("databaseManager: " + dataBaseManager.toString());
+        System.out.println(dataBaseManager.checkUser(command.getUserHash(), command.getUserId()));
     }
 }

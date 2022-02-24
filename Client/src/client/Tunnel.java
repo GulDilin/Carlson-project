@@ -8,13 +8,13 @@ import java.sql.*;
 import static java.lang.System.exit;
 
 public class Tunnel {
-    private String host;
-    private String user;
-    private String password;
-    private int port;
-    private String tunnelRemoteHost;
-    private int tunnelLocalPort;
-    private int tunnelRemotePort;
+    private final String host;
+    private final String user;
+    private final String password;
+    private final int port;
+    private final String tunnelRemoteHost;
+    private final int tunnelLocalPort;
+    private final int tunnelRemotePort;
 
     /**
      * SSH Tunnel constructor

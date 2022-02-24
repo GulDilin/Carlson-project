@@ -18,11 +18,11 @@ public class WindowsArrayList implements Serializable {
      * @author Evgeny Gurin
      * @version 1.0
      */
-    private CopyOnWriteArrayList<Window> windows;
-    private Date date;
+    private final CopyOnWriteArrayList<Window> windows;
+    private final Date date;
     private PrintStream out;
-    private String defaultFileName = "C:\\Users\\zheny\\Documents\\Progs\\Carlson-project\\src\\default.json";
-    private static ConcurrentHashMap<String, Color> colorMap;
+    private final String defaultFileName = "C:\\Users\\zheny\\Documents\\Progs\\Carlson-project\\src\\default.json";
+    private static final ConcurrentHashMap<String, Color> colorMap;
 
     static {
         colorMap = new ConcurrentHashMap<String, Color>();
@@ -41,7 +41,7 @@ public class WindowsArrayList implements Serializable {
         this.date = new Date();
     }
 
-    private static Color getColor(String colorName) throws NoSuchColorException {
+    public static Color getColor(String colorName) throws NoSuchColorException {
         Color color;
         String colorNames[] = {"green", "yellow", "red", "blue"};
         if (Arrays.asList(colorNames).contains(colorName)) {
@@ -71,7 +71,8 @@ public class WindowsArrayList implements Serializable {
      * @param window new elem
      */
     public void add(Window window) {
-        if ((window != null) & (!windows.contains(window)) & (this.windows.add(window))) {
+        if ((window != null) && (!windows.contains(window))) {
+            this.windows.add(window);
             out.println("Element was added");
         } else if (window == null) {
             out.println("Get null object");
@@ -106,8 +107,7 @@ public class WindowsArrayList implements Serializable {
      * sorting method
      */
     public void sort() {
-        this.windows.sort((Window window, Window otherwindow) ->
-                window.compareTo(otherwindow));
+        this.windows.sort(Window::compareTo);
     }
 
     public int size() {
@@ -207,7 +207,7 @@ public class WindowsArrayList implements Serializable {
      */
     public static JSONObject[] fromStringToJSONObjects(String s, PrintStream out) {
         final int LEN = s.split("},").length;
-        JSONObject objects[] = new JSONObject[LEN];
+        JSONObject[] objects = new JSONObject[LEN];
         int i = 0;
         for (String str : s.split("},")) {
             if (!str.contains("}")) {
@@ -287,8 +287,4 @@ public class WindowsArrayList implements Serializable {
         }
     }
 
-}
-
-interface Counter {
-    Double getMinSum(Window windows);
 }
